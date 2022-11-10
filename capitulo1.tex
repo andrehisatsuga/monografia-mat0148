@@ -1,0 +1,228 @@
+\chapter{Meu Primeiro Capítulo}
+
+Um pouco de texto\ldots
+
+\section{Minha Primeira Seção}
+
+\begin{defi}[Nome do objeto]
+  Minha primeira definição\index{Definição!Primeira}. 
+\end{defi}
+
+\begin{prop}[Nome da proposição]
+  Minha primeira proposição.
+\end{prop}
+
+\begin{prop}[Nome do lema]
+  Meu primeiro lema.
+\end{prop}
+
+\begin{teo}
+  \label{teo_principal}
+  Existe $n_0$ natural tal que, para todo $n\geq n_0$, a seguinte afirmação é verdadeira: para qualquer coloração das arestas de $K_n$ em vermelho e azul, existe uma partição do conjunto dos vértices de $K_n$ em dois circuitos monocromáticos, um vermelho e outro azul.
+\end{teo}
+
+\begin{defi}
+	Dado um grafo $G$ e $A, B \subseteq V(G)$ tais que $A\cap B = \emptyset$, dizemos que $(A,B)$ é um par $(\eps,G)$-regular (onde $\eps>0$), ou simplesmente $\eps$-regular, se para todo $X\subseteq A$, $Y\subseteq B$ com $\lvert X\rvert\geq\eps\lvert A\rvert$, $\lvert Y\rvert\geq\eps\lvert B\rvert$, temos
+	\[
+	\left\lvert \frac{e(X,Y)}{\lvert X\rvert\lvert Y\rvert} - \frac{e(A,B)}{\lvert A\rvert\lvert B\rvert}\right\rvert < \eps\,.
+	\]
+\end{defi}
+
+\begin{prop}
+	Se $0<\eps<0.1$, e $(A,B)$ é um par $\eps$-regular em um grafo $G$ com $|A| = |B| = m$, então existem $A'\subseteq A$ e $B'\subseteq B$, com $\lvert A'\rvert$, $\lvert B'\rvert\geq(1-\eps)m$, tais que
+	\begin{itemize}
+		\item $(A', B')$ é $(3\eps)$-regular;
+		\item no subgrafo $(A', B')$-bipartido, todo vértice tem grau maior ou igual a $\left(\dfrac{e(A,B)}{m^2} -2\eps\right)m$\,.
+	\end{itemize}
+	Mais ainda, é possível escolher $A'$ e $B'$ de modo que $|A'| = |B'|$.
+\end{prop}
+
+\begin{dem}
+	Seja $\delta = \dfrac{e(A,B)}{m^2}$ a densidade do par $(A,B)$ e $X_1 = \{u\in A : \lvert N(u)\cap B\rvert<(\delta - \eps)|B|\}$. Se $|X_1|\geq\eps|A|$, então para $X=X_1$ e $Y=B$ teríamos 
+	\[
+	\left\lvert \frac{e(X,Y)}{\lvert X\rvert\lvert Y\rvert} - \frac{e(A,B)}{\lvert A\rvert\lvert B\rvert}\right\rvert > \eps\,,
+	\]
+	absurdo. Logo $|X_1|<\eps|A|$. Analogamente, se definirmos $Y_1 = \{v\in B: |N(v)\cap A|<(\delta-\eps)|A|\}$, então $|Y_1|<\eps|B|$. Suponha, sem perda de generalidade, que $|X_1|\geq|Y_1|$. Então tome $A' = A\setminus X_1$ e $B'\subseteq B\setminus Y_1$ tal que $|A'| = |B'|$. A seguir, verificamos as propriedades de $(A', B')$:
+	\vskip 1em
+	\textsc{$(A', B')$ é $(3\eps)$-regular:}  
+	
+	Sejam $X\subseteq A'$ e $Y\subseteq B'$ tais que $|X|\geq 3\eps|A'|$ e $|Y|\geq3\eps |B'|$. Queremos provar que 
+	\[
+		\left\lvert \frac{e(X,Y)}{\lvert X\rvert\lvert Y\rvert} - \frac{e(A',B')}{\lvert A'\rvert\lvert B'\rvert}\right\rvert < 3\eps\,.
+	\]
+	Primeiro, como $(A, B)$ é um par $\eps$-regular e $|X|\geq3\eps |A'|\geq \eps |A|$ e $|Y|\geq \eps |B|$, temos que 
+	\[
+		\left\lvert \frac{e(X,Y)}{\lvert X\rvert\lvert Y\rvert} - \frac{e(A,B)}{\lvert A\rvert\lvert B\rvert}\right\rvert < \eps\,.
+	\]
+	Basta então provar que 
+	\[
+		\left| \frac{e(A,B)}{|A||B|} - \frac{e(A',B')}{|A'||B'|}\right| < 2\eps\,.
+	\]
+	Por um lado, temos que
+	\[
+		\frac{e(A',B')}{|A'||B'|} > \frac{e(A,B) - 2(\delta - \eps)\eps |A||B|}{|A'||B'|} \geq \frac{e(A,B) - 2(\delta - \eps)\eps |A||B|}{|A||B|} = \frac{e(A,B)}{|A||B|} - 2(\delta - \eps)\eps\,,
+	\] 
+	o que implica que $\frac{e(A',B')}{|A'||B'|} - \frac{e(A,B)}{|A||B|} > -2(\delta - \eps)\eps > -2\eps$.
+	
+	Por outro lado, temos
+	
+	\vskip 1em
+	
+	\textsc{Grau mínimo no subgrafo $(A', B')$-bipartido:} 
+	
+	Dado $u\in A'$, temos que 
+	\[
+	|N(u)\cap B'|\geq (\delta-\eps)|B| - \eps|B| = (\delta - 2\eps)|B| = \left( \frac{e(A,B)}{m^2} - 2\eps\right) m\,.
+	\]
+	Analogamente, para $v\in B'$ temos que $|N(v)\cap A'|\geq \left( \frac{e(A,B)}{m^2} - 2\eps\right) m$. Logo o subgrafo $(A',B')$-bipartido tem grau mínimo maior ou igual a $\left( \frac{e(A,B)}{m^2} - 2\eps\right) m$.
+	
+\end{dem}
+
+\begin{lema}
+	Para todo $\eps>0$ e para todo inteiro positivo $k_0$, existe $K_0 = K_0(\eps,k_0)$ tal que a seguinte afirmação é verdadeira: Para todo grafo $G$, existe uma partição $V(G) = V_0\cup V_1\cup\dots\cup V_k$ tal que 
+	\begin{enumerate}
+		\item $k_0\leq k\leq K_0$;
+		\item $|V_0|\leq K_0$;
+		\item $|V_1| = |V_2| = \dots = |V_k|$;
+		\item dentre os $k\choose 2$ pares $(V_i, V_j)$ com $1\leq i<j$, há menos de $\eps {k\choose 2}$ deles que não são $\eps$-regulares.
+	\end{enumerate}
+\end{lema}
+
+\begin{lema}\label{lema:haxell}
+	Seja $0<\eps<1/7$. Seja ainda $G$ um grafo $(V_1, V_2)$-bipartido tal que $|V_1| = |V_2| = m\geq1/\eps$. Suponha que $G$ tem grau mínimo maior ou igual a $7\eps m$, e que para qualquer par de subconjuntos $A\subseteq V_1$ e $B\subseteq V_2$ tal que $|A|,|B|\geq \eps m$, existe uma aresta ligando $A$ a $B$ (isto é, $e(A, B)\geq1$). Então $G$ é hamiltoniano.
+\end{lema}
+
+\begin{defi}
+	Se $K$ é um grafo $(X,Y)$-bipartido, dizemos que $K$ é \emph{$(b,f)$-expanding} se, para todo $S\subseteq X$ com $|S|\leq b$ vale que $|N(S)|\geq f|S|$, e, simetricamente, para todo $S\subseteq Y$ com $|S|\leq b$, vale $|N(S)|\geq f|S|$.
+\end{defi}
+
+\begin{prop}
+	Seja $t$ um inteiro positivo. Se $K$ é um grafo bipartido não-vazio e $K$ é $(t,2)$-expanding, então $K$ contém um caminho com $4t$ vértices.
+\end{prop}
+
+\begin{lema}
+	Seja $G$ um grafo que contém exatamente:
+	\begin{enumerate}
+		\item \label{item:regularidade}um grafo $G_0$ bipartido com bipartição $(V',V'')$ tal que cada $v'\in V'$ tem pelo menos $0.15|V''|$ vizinhos em $V''$, cada $v''\in V''$ tem pelo menos $0.15|V'|$ vizinhos em $V'$ e, para quaisquer $W'\subseteq V'$, $W''\subseteq V''$ tais que $|W'|\geq10^{-6}|V'|$, $|W''|\geq10^{-6}|V''|$, existe pelo menos uma aresta entre $W'$ e $W''$.
+		\item uma família $\mathcal{P}'$ de $r'$ caminhos vértice-disjuntos, cada um com as duas extremidades em $V'$, tal que nenhum vértice do interior do caminho pertence a $V'\cup V''$;
+		\item uma família $\mathcal{P}''$ de $r''$ caminhos vértice-disjuntos, cada um com as duas extremidades em $V''$, tal que nenhum vértice do interior do caminho pertence a $V'\cup V''\cup \bigcup_{P'\in \mathcal{P}'}V(P')$;
+	\end{enumerate}
+	Sejam $x'$ um vértice de $V'\backslash \bigcup_{P'\in \mathcal{P}'}V(P')$ e $y''$ um vértice de $V''\backslash \bigcup_{P''\in \mathcal{P}''}V(P'')$. Suponha que 
+	\[
+	r' + r''\leq 0.01m = 0.01\min\{|V'|, |V''|\}
+	\]
+	e 
+	\[
+	r'' - r' = |V''| - |V'|\,. 
+	\]
+	Então existe um caminho em $G$ que começa em $x'$, termina em $y''$, passa por todos os vértices de $V'$ e $V''$ e percorre completamente todos os caminhos de $\mathcal{P}'$ e $\mathcal{P}''$. 
+\end{lema}
+
+\begin{dem}
+	Dados $x'\in V'\setminus\bigcup_{P'\in \mathcal{P}'}V(P')$ e $y''\in V''\setminus\bigcup_{P''\in \mathcal{P}''}V(P'')$, queremos construir um caminho $P_{x'y''}$ passando por todos os vértices de $V'$ e $V''$ e todas as arestas de caminhos em $\mathcal{P}'$ e $\mathcal{P}''$. Faremos isso em três partes: primeiro, um caminho $P_{x'z''}$ saindo de $x'$ e cobrindo todos os caminhos de $\mathcal{P}'$ e $\mathcal{P}''$; segundo, um caminho $P_{z'y''}$ que termina em $y''$, com uma certa condição para que $P_{z'y''}$ tenha vários ``endpoints'' além de $z'$; e finalmente aplicaremos o Lema \ref{lema:haxell} nos vértices que sobraram para obter um caminho $P_{z''z'}$, de modo que o caminho final $P_{x'y''}$ consiste apenas de juntar $P_{x'z''}$, $P_{z''z'}$ e $P_{z'y''}$.
+	
+	Para o caminho $P_{x'z''}$, note que, dado um vértice $v'\in V'$ e outro vértice $v''\in V''$, podemos construir um caminho de tamanho três de $v'$ para $v''$ evitando qualquer subconjunto $A'\subset V'\setminus\{v\}$ com $|A'|\leq0.1m$ e qualquer subconjunto $B''\subset V''\setminus\{v''\}$ com $|B''|\leq0.1m$: basta considerar as vizinhanças de $v'$ e $v''$ e aplicar \ref{item:regularidade} para $(N(v')\cap V'')\setminus B''$ e $(N(v'')\cap V')\setminus A'$.
+	
+	Com isso, basta construir $P_{x'z''}$ de forma gulosa, saindo de $x'$ e percorrendo os caminhos em $\mathcal{P}'$ e $\mathcal{P}''$, gastando caminhos de tamanho três para conectar uma ponta de um caminho de $\mathcal{P}'$ com a ponta de um caminho de $\mathcal{P}''$, e gastando caminhos de tamanho quatro para conectar pontas de dois caminhos em $\mathcal{P}'$ ou dois caminhos de $\mathcal{P}''$ (é só primeiro ir para o outro lado e então usar um caminho de tamanho três). Desse modo, conseguimos obter um caminho $P_{x'z''}$ que começa em $x'$, termina em $z''\in V''$, passa por todas as arestas dos caminhos de $\mathcal{P}'$ e $\mathcal{P}''$, e que satisfaz
+	\begin{align*}
+	|V(P_{x'z''})\cap V'|\leq 1 + 3(r' + r'')&\leq 0.04m \,,\\
+	|V(P_{x'z''})\cap V'|\leq 1 + 3(r' + r'')&\leq 0.04m \,.
+	\end{align*}
+	
+	Para $P_{z'y''}$, comece de $y''$ e percorra um caminho até um $z_0'\in V'$, digamos $P_{z_0'y''}$, de modo que $|V(P_{z_0'y''})| = 2\lfloor0.03m\rfloor - 2$. Daí sejam $P = V'\setminus (V(P_{x'z''})\cup V(P_{z_0'y''}))$ e $Q = V''\cap V(P_{z_0'y''})$.
+	
+	Como $k\coloneqq |P|\geq |V'| - 0.07m$ e cada vértice de $Q$ manda $0.15m$ arestas para $V'$, então cada vértice de $Q$ manda pelo menos $0.08m$ arestas em $P$, logo
+	\[
+		e(P,Q)\geq0.08m|Q|\geq0.08m\cdot0.02m = 0.0016m^2\,.
+	\]
+	
+	Seja $\tilde{x} = \#\{v\in P: |N(v)\cap Q|>0.001m\}$. Então 
+	\begin{align*}
+		0.0016m^2&\leq  e(P,Q)\leq (k-\tilde{x})0.001m + \tilde{x}\cdot 0.03m\Longrightarrow \\
+		0.0016m&\leq (k-\tilde{x})0.001 + \tilde{x}\cdot 0.03m\Longleftrightarrow \\
+		\Longleftrightarrow 16m&\leq 10(k-\tilde{x}) + 300\tilde{x} = 10k + 290\tilde{x}\Longrightarrow \\
+		\Longrightarrow 290\tilde{x}&\geq 16m - 10k\,.
+	\end{align*}
+	
+	Note que $|V'| = |V''| + r' + r''\leq |V''| + 0.01m$, donde $|V'|\leq1.01m$, e daí $k = |P|\leq |V'| - |V(P_{z_0'y''})|\leq1.01m - 0.02m < m$. Logo ficamos com 
+	\begin{gather*}
+		290\tilde{x}\geq16m - 10k\geq16m - 10m = 6m \\
+		\Longrightarrow \tilde{x}\geq \frac{6m}{290} > 0.02m\,.
+	\end{gather*}
+	Assim, por \ref{item:regularidade}, existe uma aresta entre $\{v\in P: |N(v)\cap Q|>0.001m\}$ e $(N(z_0')\cap V'')\setminus(V(P_{x'z''})\cup V(P_{z_0'y''}))$, logo o caminho $P_{z_0'y''}$ pode ser estendido para um caminho $P_{z'y''}$ tal que $|V(P_{z'y''})| = 2\lfloor0.03m\rfloor$ e $z'$ tem pelo menos $0.001m$ vizinhos em $V(P_{z'y''})\cap V''$. Cada vizinho desses dá um ``endpoint'', isto é, existe $S'\subset V(P_{z'y''})$, $|S'|\geq0.001m$, tal que para todo $s'\in S'$ existe um caminho começando em $y''$ e terminando em $s'$, e que percorre os mesmos vértices de $P_{z'y''}$.
+	
+	Agora, basta notar que o subgrafo bipartido induzido por $V'\setminus(V(P_{x'z''})\cup V(P_{z'y''}))$ e $V''\setminus(V(P_{x'z''})\cup V(P_{z'y''}))$ é $(10^{-5}, 0.07)$-uniforme, logo pelo Lema \ref{lema:haxell}, existe um circuito hamiltoniano $C$ percorrendo tais vértices.
+	
+	Para cada vizinho de $z''$ em $C$, existe um caminho $P_{z''t''}$ que percorre exatamente os vértices de $C$ além de $z''$. Em outras palavras, existe um conjunto $T''\subset V''$ tal que $|T''|\geq0.07m$ e para cada $t''\in T''$ existe um caminho $P_{z''t''}$ de $z''$ a $t''$ com $V(P_{z''t''}) = \{z''\}\cup V(C)$.
+	
+	Por \ref{item:regularidade}, existe pelo menos uma aresta entre $S'$ e $T''$, digamos $\{s', t''\}$. Para tal $s'$, existe um caminho $P_{s'y''}$ de $s'$ a $y''$ que percorre os mesmos vértices de $P_{z'y''}$. Concatenando os caminhos $P_{x'z''}$, $P_{z''t''}$, a aresta $\{t'', s'\}$ e o caminho $P_{s'y''}$, obtemos o caminho desejado.
+	
+\end{dem}
+
+\begin{lema}
+	\label{gyarfas}
+	Dada qualquer coloração das arestas do grafo completo $K_n$ em vermelho e azul, existem dois circuitos $C^r$ e $C^b$ em $K_n$, tais que as arestas de $C^r$ são vermelhas, as arestas de $C^b$ são azuis, $V(C^r)\cup V(C^b) = V(K_n)$ e $|V(C^r)\cap V(C^b)|\leq1$.
+\end{lema}
+
+\begin{lema}
+	\label{lema:bipartido_azul}
+	Dada uma coloração das arestas de $K_n$ em vermelho e azul, suponha que exista uma partição dos vértices de $K_n$ em três conjuntos $V_1$, $V_2$ e $V_3$ tal que:
+	\begin{enumerate}[(i)]
+		\item todas as arestas entre $V_1$ e $V_2$ são azuis;
+		\item $\min\{|V_1|, |V_2|\}\geq 5 + 2|V_3|$.
+	\end{enumerate}
+	Então o conjunto de vértices de $K_n$ pode ser particionado como $V(K_n) = V(C^r)\cup V(C^b)$, onde $C^r$ é um circuito com todas as arestas vermelhas e $C^b$ é um circuito com todas as arestas azuis.
+\end{lema}
+
+\begin{fato}
+	Seja $k$ inteiro positivo, e $n\geq 120k^3$. Considere uma coloração arbitrária das arestas de $K_n$ em vermelho e azul. Suponha que não existe partição de $V(K_n)$ em $V_1$, $V_2$ e $V_3$ satisfazendo as condições do Lema \ref{lema:bipartido_azul}. Então, se $S_1, \dots, S_l$, $T_1, \dots, T_l\subseteq V(K_n)$ são conjuntos disjuntos com $l\geq2$, onde $|S_i|, |T_i|\geq n/2k$ para $i\in \{1, \dots, l\}$, existem caminhos vermelhos $P_1, \dots, P_l$, vértice-disjuntos, cada um de comprimento no máximo $10k$, tal que cada $P_i$ tem um extremo em $S_i$ e outro em $T_i$.
+\end{fato}
+
+\begin{dem}
+	Vamos provar que os caminhos $P_i$ existem mostrando que podemos escolhê-los um por um, começando por $P_1$, e a cada passo exibindo um $P_j$ que é vértice-disjunto aos anteriores, $P_1, \dots, P_{j-1}$.
+	
+	Seja então $j\in \{1,\dots, l\}$ e suponha já construídos os caminhos $P_i$, $1\leq i<j$. Seja $R$ o subgrafo de $K_n$ com $V(R) = V(K_n)\setminus W$, onde $W = \bigcup_{i=1}^{j-1} V(P_i)$, dado pelas arestas vermelhas. Para cada $r\in\{0,\dots,5k\}$, defina
+	\begin{align*}
+		N_r = \{v\in V(K_n)\setminus W: d_R(v, S_j\setminus W) = r\} \,,\\
+		N_r' = \{v\in V(K_n)\setminus W: d_R(v, T_j\setminus W) = r\}\,.
+	\end{align*}
+	Se $(\bigcup_{r=0}^{5k}N_r) \cap (\bigcup_{r=0}^{5k}N_r')\neq \emptyset$, então temos um caminho de tamanho no máximo $10k$ ligando $S_j$ a $T_j$, e tomamos $P_j$ para ser esse caminho. Suponha então que $(\bigcup_{r=0}^{5k}N_r)\cap(\bigcup_{r=0}^{5k}N_r') = \emptyset$. Portanto, $|\bigcup_{r=1}^{5k}N_r|\leq n/2$ ou $|\bigcup_{r=1}^{5k}N_r'|\leq n/2$. Suponha, sem perda de generalidade, que $|\bigcup_{r=1}^{5k}N_r|\leq n/2$. Como os $N_r$ são disjuntos, então existe $r_0$ tal que $|N_{r_0}|\leq n/10k$. Agora, sejam $V_3 = N_{r_0}\cup W$, $V_1 = (S_j\setminus W)\cup \bigcup_{r=1}^{r_0-1}N_r$ e $V_2 = V(K_n)\setminus (V_1\cup V_2)$. Vamos provar que $V_1$, $V_2$ e $V_3$ satisfazem as condições do Lema \ref{lema:bipartido_azul}. Note que o par $(V_1, V_2)$ induz um grafo bipartido azul completo. Vamos verificar agora que $|V_1|\geq 5 + 2|V_3|$. Primeiro, 
+	\[
+		|V_1| \geq |S_j\setminus W| \geq |S_j| - |W| \geq \frac{n}{2k} - (l-1)(10k+1)\,.
+	\] 
+	Por outro lado, temos que 
+	\[
+		5 + 2|V_3| = 5 + 2|N_{r_0}\cup W| \leq 5 + 2\left(\frac{n}{10k} + (l-1)(10k+1)\right)\,.
+	\]
+	Daí, 
+	\begin{gather}
+		\frac{n}{2k} - (l-1)(10k+1)\geq 5 + 2\left(\frac{n}{10k} + (l-1)(10k+1)\right) \Longleftrightarrow \nonumber\\
+		\frac{n}{2k} - \frac{n}{5k} \geq 5 + 3(l-1)(10k+1)\Longleftrightarrow \nonumber\\
+		\frac{3n}{10k} \geq 5 + 3(l-1)(10k+1)\,.  \label{eqn1}
+ 	\end{gather}
+	Como $(l-1)(10k+1)\leq l\cdot10k\leq 10k^2$ e $\frac{3n}{10k}\geq 5 + 3\cdot10k^2 \Leftrightarrow 3n\geq 50k + 300k^3\Leftrightarrow n\geq \frac{50k}{3} + 100k^3$ vale quando $n\geq 120k^3$, temos que $|V_1|\geq 5 + 2|V_3|$. Como $|V_2|\geq |T_j\setminus W|$, temos também que $|V_2|\geq 5 + 2|V_3|$. Logo $V_1, V_2$ e $V_3$ particionam $V(K_n)$ satisfazendo as condições do Lema \ref{lema:bipartido_azul}, contradição.
+\end{dem}
+
+\begin{obs}
+  Uma observação.
+\end{obs}
+
+\begin{coro}[Nome do corolário]
+  Meu primeiro corolário.
+\end{coro}
+
+\begin{dem}
+  Segue trivialmente do Teorema \ref{teo:nome_sugestivo}.
+\end{dem}
+
+\begin{axioma}
+  Todo subconjunto de $\mathbb{R}$, que é não vazio e limitado
+  superiormente, admite supremo\index{Supremo}.
+\end{axioma}
+
+Para mais detalhes veja ~\cite[p. nn]{Lvr} e ~\cite{Art}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: template_monografia
+%%% End:

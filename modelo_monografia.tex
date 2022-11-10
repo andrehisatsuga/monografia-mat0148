@@ -1,0 +1,160 @@
+\documentclass[11pt,a4paper]{book}
+
+\input{monografia_preambulo.tex}
+
+%%% Dados particulares da sua monografia
+
+\titulo{Meu título} % título da monografia
+\tituloeng{My title} % título da monografia em inglês
+\aluno{Nome completo} % nome completo
+\alunoabrev{Sobrenome, N.} % como será citado em referências
+\area{Área} % área da monografia (ver lista no CNPq)
+\orientador{Meu orientador -- Instituição}
+\bancapri{Professor 1 -- Instituição}
+\bancaseg{Professor 2 -- Instituição}
+\sem{n} %n= 1,2
+\ano{xxxx}
+\semano{} % monta semestre e ano no pé da capa
+
+%%% Fim dos dados particulares
+
+% ---------------------------------------------------------------------------- %
+% Seus Pacotes
+% coloque seus pacotes específicos aqui
+
+% \usepackage[opções]{nome do pacote}
+
+% ---------------------------------------------------------------------------- %
+
+\usepackage{enumerate}
+\usepackage{mathtools}
+
+
+
+% ---------------------------------------------------------------------------- %
+% Macros e Operadores
+% coloque suas macros e operadores aqui
+
+% \newcommand{\meu_comando}{o que faz}
+% \renewcommand{\sobrescrever_um_ja_existente}{o que faz}
+% \DeclareMathOperator{\sen}{sen}
+% ---------------------------------------------------------------------------- %
+
+\def \eps {\varepsilon}
+
+% ---------------------------------------------------------------------------- %
+% Corpo do texto
+
+% Automatizar a geração da capa, ficha catalográfica, folha de avaliação
+% A ficha catalográfica é desnecessária, por isso a linha já está
+% comentada.
+
+\begin{document}
+
+\frontmatter 
+
+\capa{}
+% \ficha{./ficha_exemplo.png}
+\avaliacao{}
+
+
+% ---------------------------------------------------------------------------- %
+% Dedicatória, agradecimentos e epígrafe são opcionais. Se o aluno não
+% quer algum deles basta comentar a linha abaixo. O texto dos
+% agradecimentos deve ser inserido no arquivo agradecimentos.tex
+
+\dedicatoria{Pequeno texto em que o autor presta homenagem\\ ou dedica seu
+  trabalho a alguém importante em sua vida.\\  
+  \vspace*{.05\textheight}
+  E outras homenagens aqui, não ligadas às acima.}
+
+\agradecimentos{}
+
+\epigrafe{Aqui o autor apresenta uma citação\\ relacionada com a matéria
+  de seu trabalho,\\ seguida de indicação de autoria.\\ A epígrafe é uma
+  citação direta e,\\ portanto, a fonte deve constar na lista de
+  Referências.}
+
+% ---------------------------------------------------------------------------- %
+
+% ---------------------------------------------------------------------------- %
+% Resumo: obrigatório em português e inglês. O conteúdo deve estar
+% respectivamente nos arquivos resumo.tex e abstract.tex
+
+\resumo{}
+\abstract{}
+
+\begingroup
+% Neste grupo TeX, a primeira página dos "capítulos deve atender ao
+% comando '\thispagestyle{empty}' (sem numeração de página) ao invés de
+% '\thispagestyle{plain}'. Não mexa na linha abaixo nem no \endgroup
+% mais adiante
+\patchcmd{\chapter}{plain}{empty}{}{}
+
+% ---------------------------------------------------------------------------- %
+% Lista de Figuras, Tabelas, Abreviaturas e Símbolos. Comente o que não
+% usar. As duas últimas devem ser inseridas nos arquivos
+% abreviaturas.tex e simbolos.tex
+
+\listoffigures
+\listoftables
+\abreviaturas{}
+\simbolos{}
+
+% ---------------------------------------------------------------------------- %
+
+% ---------------------------------------------------------------------------- %
+% Sumário
+
+\tableofcontents
+% ---------------------------------------------------------------------------- %
+
+% Não mexa na linha abaixo
+\endgroup
+
+% ---------------------------------------------------------------------------- %
+% Capítulos do trabalho
+
+\mainmatter
+
+% ---------------------------------------------------------------------------- %
+% Acerto dos cabeçalhos e rodapés para o corpo do texto
+\acertacabecalhos{}
+% ---------------------------------------------------------------------------- %
+
+\input{capitulo1.tex}  % arquivo com o primeiro capítulo
+%\input{capitulo2.tex}  % arquivo com o segundo capítulo
+%\input{capitulo3.tex}  % arquivo com o terceiro capítulo
+
+% Apêndices
+\appendix
+
+\input{apendice.tex} % arquivo com o apêndice
+% ---------------------------------------------------------------------------- %
+
+% ---------------------------------------------------------------------------- %
+% Bibliografia
+
+\backmatter
+
+\begin{thebibliography}{99}
+  \section*{Livros}
+    \bibitem{Lvr} Sobrenome, Nome. \emph{Título de Livro}, Editora, Edição, Ano.
+  \section*{Artigos e periódicos}
+    \bibitem{Art} Sobrenome, Nome.  \emph{Título de Artigo referência},
+    Revista, {\bf volume} (ano), pagini--pagfin.
+\end{thebibliography}
+
+% ---------------------------------------------------------------------------- %
+
+% ---------------------------------------------------------------------------- %
+% Índice remissivo
+
+\printindex   % imprime o índice remissivo no documento 
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
