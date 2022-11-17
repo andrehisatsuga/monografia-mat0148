@@ -100,6 +100,15 @@ Um pouco de texto\ldots
 	Seja $t$ um inteiro positivo. Se $K$ é um grafo bipartido não-vazio e $K$ é $(t,2)$-expanding, então $K$ contém um caminho com $4t$ vértices.
 \end{prop}
 
+\begin{dem}
+	A ideia é que, dado um caminho em $K$ com $k\leq4t-1$ vértices, conseguimos usar a condição de $K$ ser $(t,2)$-expanding exaustivamente para garantir a existência de um caminho de $k+1$ vértices em $K$. Partindo de uma aresta e aplicando esse fato repetidas vezes, obtemos um caminho de $4t$ vértices.
+	
+	Primeiro, note que, se temos um caminho $Q = v_1v_2\dots v_k$ em $K$ e uma aresta $v_1v_i\in E(K)$, então $\tilde{Q} = v_{i-1}v_{i-2}\dots v_1v_iv_{i+1}\dots v_{k-1}v_k$ é um caminho em $K$. Mais ainda, quase todos os vértices em $\tilde{Q}$ tem como vizinhos os mesmos que em $Q$, possivelmente em ordem reversa. Diremos que $\tilde{Q}$ é uma \emph{transformação simples} de $Q$ relativa a $v_k$. Se um caminho pode ser obtido de $Q$ a partir de uma sequência de transformações simples relativas a $v_k$, diremos que tal caminho é uma \emph{transformação} de $Q$ (relativa a $v_k$). Note que qualquer transformação de $Q$ mantém $x_k$ como extremidade do caminho. Vamos dizer que um vértice $v$ é um \emph{endpoint} de $Q$ relativo a $v_k$ se existe um caminho $R$ transformação de $Q$ tal que $R$ tem $v$ e $v_k$ como extremidades.
+	
+	Dado um caminho $P_0 = x_1x_2\dots x_k$ em $K$, com $k\leq 4t-1$, suponha, sem perda de generalidade, que $x_1\in X$, e queremos provar que $K$ contém um caminho de $k+1$ vértices. Seja $U$ o conjunto de endpoints de $P_0$ relativo a $x_k$. Se $N(U)\not\subseteq V(P_0)$, então encontramos um caminho de $k+1$ vértices de $v_k$ a um vizinho de um endpoint de $P_0$. Então, podemos supor que $N(U)\subseteq V(P_0)$. Vejamos que $|U|\geq t$. Com efeito, se $|U|<t$, então $|N(U)|\geq2|U|$. Como o conjunto $\{x_2\}\cup\bigcup_{x_i\in U\setminus\{x_2\}}\{x_{i-1}, x_{i+1}\}$ tem no máximo $2|U|-1$ elementos, existe um vértice $w\in N(U)\setminus(\{x_2\}\cup\bigcup_{x_i\in U\setminus\{x_2\}}\{x_{i-1}, x_{i+1}\})$. Veja que os vizinhos de $w$ em qualquer transformação de $P_0$ são os mesmos que em $P_0$. Além disso, os vizinhos de $w$ não pertencem a $U$. Mas uma aresta que liga $w$ a $U$ dá uma transformação de $P_0$ que tem um vizinho de $w$ como endpoint, absurdo.  Agora, aplique a condição de $(t,2)$-expanding para um subconjunto de $t$ elementos de $U$. Como $|V(P_0)\cap Y| = \lfloor\frac{k}{2}\rfloor\leq 2t-1$, algum vizinho de $U$ não está em $V(P_0)$, e com isso temos um caminho de $k+1$ vértices.
+	
+\end{dem}
+
 \begin{lema}
 	Seja $G$ um grafo que contém exatamente:
 	\begin{enumerate}
@@ -160,9 +169,15 @@ Um pouco de texto\ldots
 \end{dem}
 
 \begin{lema}
-	\label{gyarfas}
+	\label{lema:gyarfas}
 	Dada qualquer coloração das arestas do grafo completo $K_n$ em vermelho e azul, existem dois circuitos $C^r$ e $C^b$ em $K_n$, tais que as arestas de $C^r$ são vermelhas, as arestas de $C^b$ são azuis, $V(C^r)\cup V(C^b) = V(K_n)$ e $|V(C^r)\cap V(C^b)|\leq1$.
 \end{lema}
+
+\begin{proof}
+	Tome um maior caminho $P = u_1\dots u_kv_1\dots v_l$ tal que cada aresta $u_iu_{i+1}$ é azul e $u_kv_1$, $v_1v_2, \dots, v_{l-1}v_l$ são vermelhas. Vamos provar que $P$ é um caminho hamiltoniano. De fato, se $w\notin V(P)$, então considere a aresta $wu_k$. Suponha, sem perda de generalidade, que $wu_k$ é azul. Então o caminho $\tilde{P} = u_1\dots u_k w v_1\dots v_l$ é maior que $P$ e é composto de um caminho azul seguido de um caminho vermelho, absurdo. Logo $P$ é caminho hamiltoniano. 
+	
+	Suponha, sem perda de generalidade, que $v_lu_1$ é vermelho (se $P = u_1\dots u_k$, troque $v_l$ por $u_k$). Suponha também, sem perda de generalidade, que $u_1u_k$ é azul. Se $l=0$, isto é, $P=u_1\dots u_k$ com $u_1u_k$ azul, então $P$ é um circuito hamiltoniano azul, e temos partição tomando $C^r$ vazio. Se $l=1$, então temos partição de $V(K_n)$ em um circuito azul e um único vértice como circuito vermelho. Suponha então $l\geq2$. Caso $v_1v_l$ seja vermelho, temos partição com $C^b = u_1\dots u_k$ e $C^r = v_1\dots v_l$. Caso $v_1u_1$ seja vermelho, tome $C^b = u_1\dots u_k$ e $C^r = v_1\dots v_lu_1$. Caso $u_kv_l$ seja vermelho, tome $C^b = u_1\dots u_k$ e $C^r = u_kv_1\dots v_l$. Podemos supor, então, que $u_kv_l$, $v_lv_1$ e $v_1u_1$ são azuis. Mas então $Q = u_kv_lv_1u_1\dots u_k$ é um circuito azul. Troque $P$ por $v_1u_1\dots u_kv_l\dots v_2$ e repita o argumento. Como $l$ diminui de dois em dois a cada passo, eventualmente caímos em $l=0$ ou $l=1$, o que encerra a prova.
+\end{proof}
 
 \begin{lema}
 	\label{lema:bipartido_azul}
@@ -173,6 +188,36 @@ Um pouco de texto\ldots
 	\end{enumerate}
 	Então o conjunto de vértices de $K_n$ pode ser particionado como $V(K_n) = V(C^r)\cup V(C^b)$, onde $C^r$ é um circuito com todas as arestas vermelhas e $C^b$ é um circuito com todas as arestas azuis.
 \end{lema}
+
+\begin{proof}
+	Primeiramente, vamos construir subconjuntos $V_1'\subseteq V_1$, $V_2'\subseteq V_2$ e $V_3'\subseteq V_3$ de modo que qualquer vértice de $V_3'$ manda apenas arestas vermelhas para $V_1'\cup V_2'$, e de modo que $V_4' \coloneqq V(K_n)\setminus (V_1'\cup V_2'\cup V_3')$ contém um caminho hamiltoniano azul $x_1\dots x_m$ com $x_1\in V_2$ e $x_m\in V_1$. Conseguiremos fazer isso de modo que $\min\{|V_1'|, |V_2'|\}\geq 5 + |V_3'|$.
+	
+	Começando com $V_1(0) = V_1$, $V_2(0) = V_2$ e $V_3(0) = V_3$, vamos definir recursivamente cadeias descendentes de conjuntos $V_1(k)$, $V_2(k)$ e $V_3(k)$ para $k$ de zero até $l$ tal que $(V_1', V_2', V_3', V_4') = (V_1(l), V_2(l), V_3(l), V(K_n)\setminus (V_1(l)\cup V_2(l)\cup V_3(l)))$ satisfaça as condições do parágrafo anterior.
+	
+	Suponha construídos $V_1(k)$, $V_2(k)$ e $V_3(k)$ para um $k\geq0$, e que ainda existe pelo menos uma aresta azul entre $V_3(k)$ e $V_1(k)\cup V_2(k)$. Então definimos $V_i(k+1)$ da seguinte forma:
+	\begin{enumerate}[\bfseries C\text{a}so 1:]
+		\item \label{item:dois_vizinhos_azuis}Se existe $w\in V_3(k)$ tal que $w$ tem pelo menos dois vizinhos azuis $u_1$ e $u_2$ em $V_1(k)$, tome $v\in V_2(k)$ arbitrário e faça $V_1(k+1) = V_1(k)\setminus\{u_1, u_2\}$, $V_2(k+1) = V_2(k)\setminus\{v\}$ e $V_3(k+1) = V_3(k)\setminus\{w\}$.
+	\end{enumerate}
+	Note que, se $x_{1k}x_{2k}\dots x_{m_kk}$ é um caminho azul com $x_{1k}\in V_2$ e $x_{m_kk}\in V_1$, então $x_{1k}\dots x_{m_kk}vu_1wu_2$ é um caminho azul terminando em $u_2\in V_1$.
+	\begin{enumerate}[\bfseries C\text{a}so 2:]
+		\item Se existe $w\in V_3(k)$ tal que $w$ tem pelo menos dois vizinhos azuis $v_1$ e $v_2$ em $V_2(k)$, tome, analogamente ao caso anterior, $u\in V_1(k)$ arbitrário e faça $V_1(k+1) = V_1(k)\setminus\{u\}$, $V_2(k+1) = V_2(k)\setminus\{v_1,v_2\}$ e $V_3(k+1) = V_3(k)\setminus\{w\}$.
+	\end{enumerate}
+	Note que, se $x_{1k}x_{2k}\dots x_{m_kk}$ é um caminho azul com $x_{1k}\in V_2$ e $x_{m_kk}\in V_1$, então $x_{1k}\dots x_{m_kk}v_2wv_1u$ é um caminho azul terminando em $u\in V_1$.
+	
+	Se nenhum dos dois casos acima se aplica, então todo vértice $w\in V_3(k)$ tem no máximo um vizinho azul em $V_1(k)$ e no máximo um vizinho azul em $V_2(k)$. Nesse último caso, tiramos os vizinhos azuis ao invés do vértice em $V_3(k)$:
+	\begin{enumerate}[\bfseries C\text{a}so 3:]
+		\item Se existe $w\in V_3(k)$ tal que $w$ tem um único vizinho azul em $V_1(k)$ e/ou um único vizinho azul em $V_2(k)$, tome $u\in V_1(k)$ e $v\in V_2(k)$ de modo que $\{u,v\}$ contém esses possíveis dois vizinhos azuis, e faça $V_1(k+1) = V_1(k)\setminus\{u\}$, $V_2(k+1) = V_2(k+1)\setminus\{v\}$ e $V_3(k+1) = V_3(k)$.
+	\end{enumerate}
+	Note que, se $x_{1k}x_{2k}\dots x_{m_kk}$ é um caminho azul com $x_{1k}\in V_2$ e $x_{m_kk}\in V_1$, então $x_{1k}\dots x_{m_kk}vu$ é um caminho azul terminando em $u\in V_1$.
+	
+	Como, a cada passo da construção, o número de vértices em $V_3(k)$ que tem algum vizinho azul em $V_1(k)\cup V_2(k)$ diminui em pelo menos um, o roteiro acima para em $l\leq |V_3|$ passos. Sejam então $V_1' = V_1(l)$, $V_2' = V_2(l)$, $V_3' = V_3(l)$ e $V_4' = V(K_n)\setminus (V_1(l)\cup V_2(l)\cup V_3(l))$, com $V_3'$ e $V_4'$ possivelmente vazios. Como o processo parou, todas as arestas entre $V_3'$ e $V_1'\cup V_2'$ são vermelhas. Como $V_1'\subseteq V_1$ e $V_2'\subseteq V_2$, temos que todas as arestas entre $V_1'$ e $V_2'$ são azuis. Como $|V_1(k+1)| - |V_3(k+1)|\geq |V_1(k)| - |V_3(k)| - 1$, temos que 
+	\[
+		|V_1'| - |V_3'| \geq |V_1| - |V_3| - l \geq |V_1| - 2|V_3| \geq 5\,,
+	\]
+	donde $|V_1'|\geq 5 + |V_3'|$ (e, analogamente, $|V_2'|\geq 5 + |V_3'|$). Note também que foi construído ao longo do processo um caminho $x_1\dots x_m$ azul passando por todos os vértices de $V_4'$, tal que todas as arestas de $x_1$ a $V_2'$ e todas as arestas de $x_m$ a $V_1'$ são azuis (em particular, $x_1\in V_2$ pois, em todos os casos, o primeiro vértice adicionado ao caminho é um vértice de $V_2$).
+	
+	Seja $n_i = |V_i'|$ para $i=1,2,3$, e suponha, sem perda de generalidade, que $n_1\geq n_2$.
+\end{proof}
 
 \begin{fato}
 	Seja $k$ inteiro positivo, e $n\geq 120k^3$. Considere uma coloração arbitrária das arestas de $K_n$ em vermelho e azul. Suponha que não existe partição de $V(K_n)$ em $V_1$, $V_2$ e $V_3$ satisfazendo as condições do Lema \ref{lema:bipartido_azul}. Então, se $S_1, \dots, S_l$, $T_1, \dots, T_l\subseteq V(K_n)$ são conjuntos disjuntos com $l\geq2$, onde $|S_i|, |T_i|\geq n/2k$ para $i\in \{1, \dots, l\}$, existem caminhos vermelhos $P_1, \dots, P_l$, vértice-disjuntos, cada um de comprimento no máximo $10k$, tal que cada $P_i$ tem um extremo em $S_i$ e outro em $T_i$.
