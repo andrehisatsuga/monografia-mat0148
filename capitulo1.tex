@@ -4,18 +4,6 @@ Um pouco de texto\ldots
 
 \section{Minha Primeira Seção}
 
-\begin{defi}[Nome do objeto]
-  Minha primeira definição\index{Definição!Primeira}. 
-\end{defi}
-
-\begin{prop}[Nome da proposição]
-  Minha primeira proposição.
-\end{prop}
-
-\begin{prop}[Nome do lema]
-  Meu primeiro lema.
-\end{prop}
-
 \begin{teo}
   \label{teo_principal}
   Existe $n_0$ natural tal que, para todo $n\geq n_0$, a seguinte afirmação é verdadeira: para qualquer coloração das arestas de $K_n$ em vermelho e azul, existe uma partição do conjunto dos vértices de $K_n$ em dois circuitos monocromáticos, um vermelho e outro azul.
@@ -29,9 +17,10 @@ Um pouco de texto\ldots
 \end{defi}
 
 \begin{prop}
-	Se $0<\eps<0.1$, e $(A,B)$ é um par $\eps$-regular em um grafo $G$ com $|A| = |B| = m$, então existem $A'\subseteq A$ e $B'\subseteq B$, com $\lvert A'\rvert$, $\lvert B'\rvert\geq(1-\eps)m$, tais que
+	\label{prop:remocao_de_grau_pequeno}
+	Se $0<\eps<0.2$, e $(A,B)$ é um par $\eps$-regular em um grafo $G$ com $|A| = |B| = m$, então existem $A'\subseteq A$ e $B'\subseteq B$, com $\lvert A'\rvert$, $\lvert B'\rvert\geq(1-\eps)m$, tais que
 	\begin{itemize}
-		\item $(A', B')$ é $(3\eps)$-regular;
+		\item $(A', B')$ é $(4\eps)$-regular;
 		\item no subgrafo $(A', B')$-bipartido, todo vértice tem grau maior ou igual a $\left(\dfrac{e(A,B)}{m^2} -2\eps\right)m$\,.
 	\end{itemize}
 	Mais ainda, é possível escolher $A'$ e $B'$ de modo que $|A'| = |B'|$.
@@ -44,27 +33,31 @@ Um pouco de texto\ldots
 	\]
 	absurdo. Logo $|X_1|<\eps|A|$. Analogamente, se definirmos $Y_1 = \{v\in B: |N(v)\cap A|<(\delta-\eps)|A|\}$, então $|Y_1|<\eps|B|$. Suponha, sem perda de generalidade, que $|X_1|\geq|Y_1|$. Então tome $A' = A\setminus X_1$ e $B'\subseteq B\setminus Y_1$ tal que $|A'| = |B'|$. A seguir, verificamos as propriedades de $(A', B')$:
 	\vskip 1em
-	\textsc{$(A', B')$ é $(3\eps)$-regular:}  
+	\textsc{$(A', B')$ é $(4\eps)$-regular:}  
 	
-	Sejam $X\subseteq A'$ e $Y\subseteq B'$ tais que $|X|\geq 3\eps|A'|$ e $|Y|\geq3\eps |B'|$. Queremos provar que 
+	Sejam $X\subseteq A'$ e $Y\subseteq B'$ tais que $|X|\geq 4\eps|A'|$ e $|Y|\geq4\eps |B'|$. Queremos provar que 
 	\[
-		\left\lvert \frac{e(X,Y)}{\lvert X\rvert\lvert Y\rvert} - \frac{e(A',B')}{\lvert A'\rvert\lvert B'\rvert}\right\rvert < 3\eps\,.
+		\left\lvert \frac{e(X,Y)}{\lvert X\rvert\lvert Y\rvert} - \frac{e(A',B')}{\lvert A'\rvert\lvert B'\rvert}\right\rvert < 4\eps\,.
 	\]
-	Primeiro, como $(A, B)$ é um par $\eps$-regular e $|X|\geq3\eps |A'|\geq \eps |A|$ e $|Y|\geq \eps |B|$, temos que 
+	Primeiro, como $(A, B)$ é um par $\eps$-regular e $|X|\geq4\eps |A'|\geq \eps |A|$ e $|Y|\geq \eps |B|$, temos que 
 	\[
 		\left\lvert \frac{e(X,Y)}{\lvert X\rvert\lvert Y\rvert} - \frac{e(A,B)}{\lvert A\rvert\lvert B\rvert}\right\rvert < \eps\,.
 	\]
 	Basta então provar que 
 	\[
-		\left| \frac{e(A,B)}{|A||B|} - \frac{e(A',B')}{|A'||B'|}\right| < 2\eps\,.
+		\left| \frac{e(A,B)}{|A||B|} - \frac{e(A',B')}{|A'||B'|}\right| < 3\eps\,.
 	\]
 	Por um lado, temos que
 	\[
-		\frac{e(A',B')}{|A'||B'|} > \frac{e(A,B) - 2(\delta - \eps)\eps |A||B|}{|A'||B'|} \geq \frac{e(A,B) - 2(\delta - \eps)\eps |A||B|}{|A||B|} = \frac{e(A,B)}{|A||B|} - 2(\delta - \eps)\eps\,,
+		\frac{e(A',B')}{|A'||B'|} > \frac{e(A,B) - 2\eps |A||B|}{|A'||B'|} \geq \frac{e(A,B) - 2\eps |A||B|}{|A||B|} = \frac{e(A,B)}{|A||B|} - 2\eps\,,
 	\] 
-	o que implica que $\frac{e(A',B')}{|A'||B'|} - \frac{e(A,B)}{|A||B|} > -2(\delta - \eps)\eps > -2\eps$.
+	o que implica que $\frac{e(A',B')}{|A'||B'|} - \frac{e(A,B)}{|A||B|} > -2\eps$.
 	
-	Por outro lado, temos
+	Por outro lado, temos que
+	\[
+		\frac{e(A', B')}{|A'||B'|} < \frac{e(A, B)}{|A'||B'|} \leq \frac{e(A,B)}{(1-\eps)^2|A||B|} < (1+3\eps)\frac{e(A,B)}{|A||B|}\leq \frac{e(A,B)}{|A||B|} + 3\eps\,,
+	\]
+	donde $\frac{e(A',B')}{|A'||B'|} - \frac{e(A,B)}{|A||B|} < 3\eps$. Logo $\left| \frac{e(A,B)}{|A||B|} - \frac{e(A',B')}{|A'||B'|}\right| < 3\eps$, como queríamos.
 	
 	\vskip 1em
 	
@@ -110,9 +103,10 @@ Um pouco de texto\ldots
 \end{dem}
 
 \begin{lema}
+	\label{lema:caminho_hamiltoniano}
 	Seja $G$ um grafo que contém exatamente:
 	\begin{enumerate}
-		\item \label{item:regularidade}um grafo $G_0$ bipartido com bipartição $(V',V'')$ tal que cada $v'\in V'$ tem pelo menos $0.15|V''|$ vizinhos em $V''$, cada $v''\in V''$ tem pelo menos $0.15|V'|$ vizinhos em $V'$ e, para quaisquer $W'\subseteq V'$, $W''\subseteq V''$ tais que $|W'|\geq10^{-6}|V'|$, $|W''|\geq10^{-6}|V''|$, existe pelo menos uma aresta entre $W'$ e $W''$.
+		\item \label{item:regularidade}um grafo $G_0$ bipartido com bipartição $(V',V'')$ tal que cada $v'\in V'$ tem pelo menos $0.15|V''|$ vizinhos em $V''$, cada $v''\in V''$ tem pelo menos $0.15|V'|$ vizinhos em $V'$ e, para quaisquer $W'\subseteq V'$, $W''\subseteq V''$ tais que $|W'|\geq10^{-6}|V'|$, $|W''|\geq10^{-6}|V''|$, existe pelo menos uma aresta entre $W'$ e $W''$;
 		\item uma família $\mathcal{P}'$ de $r'$ caminhos vértice-disjuntos, cada um com as duas extremidades em $V'$, tal que nenhum vértice do interior do caminho pertence a $V'\cup V''$;
 		\item uma família $\mathcal{P}''$ de $r''$ caminhos vértice-disjuntos, cada um com as duas extremidades em $V''$, tal que nenhum vértice do interior do caminho pertence a $V'\cup V''\cup \bigcup_{P'\in \mathcal{P}'}V(P')$;
 	\end{enumerate}
@@ -214,7 +208,7 @@ Um pouco de texto\ldots
 	\[
 		|V_1'| - |V_3'| \geq |V_1| - |V_3| - l \geq |V_1| - 2|V_3| \geq 5\,,
 	\]
-	donde $|V_1'|\geq 5 + |V_3'|$ (e, analogamente, $|V_2'|\geq 5 + |V_3'|$). Note também que foi construído ao longo do processo um caminho $x_1\dots x_m$ azul passando por todos os vértices de $V_4'$, tal que todas as arestas de $x_1$ a $V_1'$ e todas as arestas de $x_m$ a $V_2'$ são azuis (em particular, $x_1\in V_2$ pois, em todos os casos, o primeiro vértice adicionado ao caminho é um vértice de $V_2$).
+	donde $|V_1'|\geq 5 + |V_3'|$ (e, analogamente, $|V_2'|\geq 5 + |V_3'|$). Note, também, que foi construído ao longo do processo um caminho $x_1\dots x_m$ azul passando por todos os vértices de $V_4'$, tal que todas as arestas de $x_1$ a $V_1'$ e todas as arestas de $x_m$ a $V_2'$ são azuis (em particular, $x_1\in V_2$ pois, em todos os casos, o primeiro vértice adicionado ao caminho é um vértice de $V_2$).
 	
 	Seja $n_i = |V_i'|$ para $i=1,2,3$, e suponha, sem perda de generalidade, que $n_1\geq n_2$. A partir daqui, o argumento se separa de acordo com os casos abaixo. Por exemplo, se $n_1-n_2 = n_3$, então podemos separar $W_1'\subseteq V_1'$ com $|W_i'| = n_1-n_2$ e tomar $C^r$ como sendo um circuito hamiltoniano vermelho no subgrafo bipartido completo entre $V_3'$ e $W_1'$, e $C^b$ como um circuito azul percorrendo primeiro o caminho $x_1\dots x_m$ e alternando entre vértices de $V_2'$ e $V_1'\setminus W_1'$. De forma geral, temos:
 	
@@ -222,7 +216,7 @@ Um pouco de texto\ldots
 		$n_1 - n_2\leq n_3$.\\		
 		Se $n_3 - n_1 + n_2$ é par, então tome $W_1'\subseteq V_1'$ e $W_2'\subseteq V_2'$ com $|W_1'| = n_1 - n_2 + \frac{n_3 - n_1 + n_2}{2}$ e $|W_2'| = \frac{n_3 - n_1 + n_2}{2}$. Como $|W_1'\cup W_2'| = n_3 = |V_3'|$, existe um circuito vermelho no subgrafo bipartido completo vermelho entre $V_3'$ e $W_1'\cup W_2'$, e um circuito azul cobrindo o restante dos vértices (percorra o caminho $x_1\dots x_m$ primeiro e alterne entre vértices de $V_2'\setminus W_2'$ e $V_1'\setminus W_1'$).
 		
-		Por outro lado, se $n_3 - n_1 + n_2$ é ímpar, então consideramos o seguinte argumento. Considere uma aresta $e = \{u_1, u_2\}\subseteq V_1'$ qualquer (note que $n_1\geq5>2$, logo $e$ existe). Se $e$ é azul, então fazemos o argumento anterior para $n_1-1$ no lugar de $n_1$ (tomando $W_1'\subseteq V_1'\setminus\{u_1, u_2\}$) e, para o circuito azul, começamos pela aresta $u_1u_2$ e então percorremos o caminho $x_1\dots x_m$ e alternamos entre $V_2'$ e $V_1'$.
+		Por outro lado, se $n_3 - n_1 + n_2$ é ímpar, então consideramos o seguinte argumento. Tome uma aresta $e = \{u_1, u_2\}\subseteq V_1'$ qualquer (note que $n_1\geq5>2$, logo $e$ existe). Se $e$ é azul, então fazemos o argumento anterior para $n_1-1$ no lugar de $n_1$ (tomando $W_1'\subseteq V_1'\setminus\{u_1, u_2\}$) e, para o circuito azul, começamos pela aresta $u_1u_2$ e então percorremos o caminho $x_1\dots x_m$ e alternamos entre $V_2'$ e $V_1'$.
 		Caso contrário, se $e$ é vermelha, então, para $n_3\geq2$, tome $e\subseteq W_1'\subseteq V_1'$ e $W_2'\subseteq V_2'$ com $|W_1'| = (n_1 + 1) - n_2 + \frac{n_3 - (n_1+1) + n_2}{2}$ e $|W_2'| = \frac{n_3 - n_1 + n_2 + 1}{2}$ (é possível tomar $e\subseteq W_1'$ pois $|W_1'| = \frac{n_1 - n_2 + n_3 + 1}{2}\geq \frac{n_3 + 1}{2}>1$). Note que $|V_1'\setminus W_1'| = |V_2'\setminus W_2'| = \frac{n_1 + n_2 - n_3 - 1}{2}$. Logo existe um circuito azul cobrindo $(V_1'\setminus W_1')\cup(V_2'\setminus W_2')\cup V_4'$. Para construir um circuito vermelho $C^r$ com $V(C^r) = V_3'\cup W_1' \cup W_2'$, basta começar por $u_1u_2$ e alternar entre $V_3'$ e $W_1'\cup W_2'$. Se $n_3 = 1$, então $n_1 = n_2$ e faça $C^r$ como o único vértice em $V_3'$ e $C^b$ começando pelo caminho $x_1\dots x_m$ e alternando entre $V_2'$ e $V_1'$.
 	\end{caso} 
 	\begin{caso}
@@ -267,11 +261,11 @@ Um pouco de texto\ldots
 
 \section{Demonstração do Teorema \ref{teo_principal}}
 
-Sejam $\eps = 10^{-60}$ e $k_0 = 2/\eps$. Seja $K_0 = K_0(\eps, k_0)$ a constante garantida pelo Lema da Regularidade de Szemerédi. Vamos provar que o Teorema \ref{teo_principal} é verdade para $n_0 = 120K_0^3$.
+Sejam $\eps = 10^{-60}$ e $k_0 = 2/\eps$. Seja $K_0 = K_0(\eps, k_0)$ a constante garantida pelo Lema da Regularidade de Szemerédi. Iremos provar que o Teorema \ref{teo_principal} é verdade para $n_0 = 120K_0^3$.
 
-Seja $n\geq n_0$ e considere uma coloração arbitrária das arestas de $K_n$ em vermelho e azul. Vamos provar que existe uma partição de $V(K_n)$ em dois circuitos monocromáticos, um vermelho e outro azul.
+Seja $n\geq n_0$ e considere uma coloração arbitrária das arestas de $K_n$ em vermelho e azul. Queremos provar que existe uma partição de $V(K_n)$ em dois circuitos monocromáticos, um vermelho e outro azul.
 
-Seja $R$ o grafo induzido pelas arestas vermelhas e $B$ o induzido pelas arestas azuis. Vamos supor, sem perda de generalidade, que o número de arestas vermelhas é maior ou igual ao número de arestas azuis, ou seja, que pelo menos metade das arestas são vermelhas, i.e. $E(R)\geq \frac{1}{2}\binom{n}{2}$. 
+Seja $R$ o grafo induzido pelas arestas vermelhas e $B$ o induzido pelas arestas azuis. Vamos supor, sem perda de generalidade, que o número de arestas vermelhas é maior ou igual ao número de arestas azuis, ou seja, que pelo menos metade das arestas são vermelhas, i.e., $E(R)\geq \frac{1}{2}\binom{n}{2}$. 
 Se a coloração das arestas de $K_n$ satisfaz as hipóteses do Lema \ref{lema:bipartido_azul}, então existe a partição desejada e não há mais nada o que fazer. Logo, podemos supor que isso não ocorre, de modo que podemos usar o Fato \ref{fato:caminhos_vermelhos} para $k\leq K_0$.
 
 Começamos aplicando o Lema da Regularidade de Szemerédi para $G = R$, obtendo uma partição $(\eps, \hat{k}, R)$-regular $\hat{\Pi} = (\hat{V}_0, \hat{V}_1, \dots, \hat{V}_{\hat{k}})$, com $k_0\leq \hat{k}\leq K_0$. Lembre que um par $(\eps, R)$-regular é também $(\eps, B)$-regular; vamos dizer que tais pares são \emph{regulares}. Sobre $\hat{\Pi}$, temos que:
@@ -296,21 +290,44 @@ Vamos colorir os pares $\{i,j\}$, $1\leq i<j\leq k$ em três cores de acordo com
 \end{itemize}
 
 Seja $\Gamma_R$ o grafo reduzido dado pelos pares vermelhos, isto é, $V(\Gamma_R) = \{1,\dots, k\}$ e $E(\Gamma_R) = \{\{i,j\}\in \binom{[k]}{2}: \{i,j\} \text{ é vermelho}\}$. Vamos provar que $e(\Gamma_R)\geq0.185k^2$.
-Como estamos supondo $e(R)\geq \frac{1}{2}\binom{n}{2}$, vamos limitar por cima a quantidade de arestas em $R$ de acordo com a partição $\bar{\Pi}$. Contando arestas vermelhas, temos então:
+Como estamos supondo $e(R)\geq \frac{1}{2}\binom{n}{2}$, limitaremos por cima a quantidade de arestas em $R$ de acordo com a partição $\bar{\Pi}$. Contando arestas vermelhas, temos então:
 \begin{itemize}
 	\item[] Dentro de $\bar{V}_1, \dots, \bar{V}_k$: $~\leq k \binom{n/k}{2} < \frac{n^2}{2k} < \frac{\eps}{2}n^2$\,;
 	\item[] Dentro de $\bar{V}_0$: $~\leq \binom{|\bar{V}_0|}{2}\leq \binom{2\eps^{1/2}n}{2} < 2\eps n^2$\,;
 	\item[] Entre $\bar{V}_0$ e $\bar{V}_1,\dots, \bar{V}_k$: $~\leq |\bar{V}_0||\bar{V}_1\cup\dots\cup \bar{V}_k| \leq 2\eps^{1/2}n\cdot n = 2\eps^{1/2}n^2$\,;
-	\item[] Em pares não-regulares: $\leq 2\eps k^2\cdot \left(\frac{n}{k}\right)^2 = \eps n^2$\,;
+	\item[] Em pares não-regulares: $\leq 2\eps k^2\cdot \left(\frac{n}{k}\right)^2 = 2\eps n^2$\,;
 	\item[] Em pares azuis: $\leq \big[\binom{k}{2} - e(\Gamma_R)\big]\cdot 0.2 \cdot \left(\frac{n}{k}\right)^2 < 0.2\frac{n^2}{2} - \frac{e(\Gamma_R)}{5}\left(\frac{n}{k}\right)^2 = \frac{n^2}{10} - \frac{e(\Gamma_R)}{5}\left(\frac{n}{k}\right)^2$\,;
 	\item[] Em pares vermelhos: $~\leq e(\Gamma_R)\left(\frac{n}{k}\right)^2$\,.
 \end{itemize}
 Logo 
 \begin{align*}
-	&\left(\frac{\eps}{2} + 2\eps + 2\eps^{1/2} + \eps\right)n^2 + \frac{n^2}{10} + \frac{4}{5}e(\Gamma_R)\left(\frac{n}{k}\right)^2\geq \frac{1}{2}\binom{n}{2}\\
+	&\left(\frac{\eps}{2} + 2\eps + 2\eps^{1/2} + 2\eps\right)n^2 + \frac{n^2}{10} + \frac{4}{5}e(\Gamma_R)\left(\frac{n}{k}\right)^2\geq \frac{1}{2}\binom{n}{2}\\
 	&\Longrightarrow  \frac{4}{5}e(\Gamma_R)\left(\frac{n}{k}\right)^2\geq n^2\left(\frac{1}{4} - \frac{1}{10} - 3\eps^{1/2}\right)\,.
 \end{align*}
 Portanto, $e(\Gamma_R)\geq \frac{5}{4}\big(\frac{1}{4} - \frac{1}{10} - 3\eps^{1/2}\big)k^2 > 0.185k^2$.
+
+Vamos provar que $\Gamma_R$ contém um casamento cobrindo mais de $0.2k$ vértices. Tome um casamento maximal de $\Gamma_R$ e suponha, por absurdo, que tal casamento cobre não mais de $0.2k$ vértices. Então temos pelo menos $\binom{0.8k}{2}> 0.63k^2/2 > \binom{k}{2} - 0.185k^2$ arestas no complementar de $\Gamma_R$, absurdo. Vamos supor, daqui em diante, que $\{\{1,2\}, \dots, \{2s-1, 2s\}\}$ é um casamento \emph{máximo} de $\Gamma_R$, com $s > 0.1k$.
+
+%O próximo passo é definir uma partição de $V(K_n)$
+
+Com o que temos até agora, conseguimos definir uma ``primeira tentativa'' de encontrar os dois circuitos monocromáticos desejados. Mais especificamente, teremos uma partição de $V(K_n)$ em três conjuntos, $\tilde{V}^r$, $\tilde{V}^b$ e $\tilde{V}_0$, de modo que existe um circuito vermelho cobrindo exatamente $\tilde{V}^r$, um circuito azul cobrindo $\tilde{V}^b$ e o conjunto de sobra $\tilde{V}_0$ é pequeno. Mais do que apenas os circuitos, $\tilde{V}^r$ e $\tilde{V}^b$ terão estrutura suficiente de modo a ser possível adicionar vértices de $\tilde{V}_0$ um por um neles mantendo a existência de circuitos monocromáticos que cobrem $\tilde{V}^r$ e $\tilde{V}^b$. Em $\tilde{V}^r$, a estrutura será dada por $s$ pares de conjuntos de vértices satisfazendo as condições do Lema \ref{lema:caminho_hamiltoniano}, e $\tilde{V}^b$ será tal que o subgrafo de $B$ induzido por $\tilde{V}^b$ tem grau mínimo $0.7|\tilde{V}^b|$. Sem mais delongas, vamos às definições precisas.
+
+Para cada $i\in [s]$, como o par $(\bar{V}_{2i-1}, \bar{V}_{2i})$ é regular, temos pela Proposição \ref{prop:remocao_de_grau_pequeno} que existem $V'_{2i-1}\subseteq\bar{V}_{2i-1}$, $V'_{2i}\subseteq\bar{V}_{2i}$ tais que $|V'_{2i-1}| = |V'_{2i}|\geq (1-\eps)|\bar{V}_{2i-1}|$, o par $(V'_{2i-1}, V'_{2i})$ é $(4\eps, R)$-regular, e todo vértice em $V'_{2i-1}$ tem pelo menos $(0.2-2\eps)|\bar{V}_{2i-1}|$ vizinhos vermelhos em $V'_{2i}$, e vice-versa. Pelo Fato \ref{fato:caminhos_vermelhos}, existem caminhos vermelhos $P_1, \dots, P_s$ vértice-disjuntos, cada um de comprimento no máximo $10k$, tal que $P_1$ tem um extremo em $V'_2$ e outro em $V'_3$, $P_2$ tem um extremo em $V'_4$ e outro em $V'_5$, e assim por diante, $P_{s-1}$ tem um extremo em $V'_{2s-2}$ e outro em $V'_{2s-1}$, e $P_s$ tem um extremo em $V'_{2s}$ e outro em $V'_1$. Para fechar um circuito vermelho, vamos usar o Lema \ref{lema:caminho_hamiltoniano} dentro de cada par $(V'_{2i-1}, V'_{2i})$, mas como os caminhos $P_i$ podem ter usado vértices dos $V'_i$, precisamos balancear cada par $(V'_{2i-1}, V'_{2i})$ para aplicar tal lema. Vamos denominar então os vértices de $\bigcup_{i=1}^{s}V(P_i)$ de \emph{inativos}, e vamos nos referir aos vértices que ainda não foram ``inativados'' como os vértices \emph{ativos} (ao longo do argumento, mais vértices serão ``inativados''; os vértices ativos são aqueles que não foram ``inativados'' em nenhum momento anterior). Escolhemos então subconjuntos $V_j\subseteq V'_j$, com $|V_j|\geq |V'_j| - 5k^2$ tais que, para cada $i\in [s]$, os conjuntos $V_{2i-1}$ e $V_{2i}$ tem o mesmo número de vértices ativos. Agora sim, aplicamos o Lema \ref{lema:caminho_hamiltoniano} em cada par $(V_{2i-1}\setminus\bigcup_{i=1}^{2s} V(P_i), V_{2i}\setminus\bigcup_{i=1}^{2s} V(P_i))$, para $r'=r''=0$, garantindo a existência de caminhos ligando extremos dos caminhos $P_1, \dots, P_s$, de modo que todos esses caminhos juntos formam um circuito vermelho que cobre $\tilde{V}^r\coloneqq(\bigcup_{i=1}^{2s}V_i)\cup (\bigcup_{i=1}^{s}V(P_i))$.
+
+Para definir $\tilde{V}^b$, separamos em dois casos. Se $k-2s$ é pequeno, i.e., se os conjuntos $V_{2s+1},\dots, V_k$ que sobraram são poucos, então não temos muita estrutura entre eles (podem ser todos pares pretos no grafo reduzido). Nesse caso, colocamos tudo em $\tilde{V}_0$. Mais precisamente, se $k-2s\leq\eps^{1/3}k$, definimos $\tilde{V}^b = \emptyset$ e $\tilde{V}_0 = V(K_n)\setminus \tilde{V}^r$. Para $k-2s>\eps^{1/3}k$, defina $W = V'_{2s+1}\cup\dots\cup V'_{k}$ e $W'\subseteq W$ como o conjunto dos vértices de $W$ que tem menos de $0.75|W|$ vizinhos azuis em $W$. Como $\{\{1,2\}, \dots, \{2s-1, 2s\}\}$ é casamento máximo de $\Gamma_R$, temos que todos os pares $\{i,j\}$ com $2s+1\leq i < j \leq k$ são pretos ou azuis, e cada $i\in\{2s+1,\dots,k\}$ está em no máximo $2\eps^{1/2}$ pares pretos. Vamos provar que, para todo $i\in\{2s+1,\dots,k\}$, $|\bar{V}_i\cap W'|\leq\eps|\bar{V}_i|$. Suponha, por absurdo, que $|\bar{V}_i\cap W'| > \eps|\bar{V}_i|$. Então, para cada $j\in\{2s+1,\dots,k\}$ tal que $\{i,j\}$ é azul, temos por regularidade que:
+\begin{align*}
+	\left|\frac{e_B(\bar{V}_i\cap W', \bar{V}_j)}{|\bar{V}_i\cap W'||\bar{V}_j|} - \frac{e_B(\bar{V}_i,\bar{V}_j)}{|\bar{V}_i||\bar{V}_j|}\right| < \eps \quad
+	\Longrightarrow \quad \frac{e_B(\bar{V}_i\cap W', \bar{V}_j)}{|\bar{V}_i\cap W'||\bar{V}_j|} > 0.8 - \eps\,.
+\end{align*}
+
+Logo $e_B(\bar{V}_i\cap W', \bar{V}_j) > (0.8-\eps)|\bar{V}_i\cap W'||\bar{V}_j| = (0.8-\eps)|\bar{V}_i\cap W'|\frac{|W|}{k-2s}$. Como há pelo menos $k - 2s - 1 - 2\eps^{1/2}k$ pares azuis contendo $i$, temos que 
+\begin{align*}
+	e(\bar{V}_i\cap W', W\setminus\bar{V}_i) &\geq (k-2s-1-2\eps^{1/2}k)(0.8 - \eps)|\bar{V}_i\cap W'|\frac{|W|}{k-2s} \\
+	&> (1 - \frac{3\eps^{1/2}k}{\eps^{1/3}k})(0.8 - \eps)|\bar{V}_i\cap W'||W| \\
+	&> 0.75|\bar{V}_i\cap W'||W|.
+\end{align*}
+Logo algum vértice de $\bar{V}_i\cap W'$ tem mais de $0.75|W|$ vizinhos azuis em $W$, absurdo.
+
 \begin{obs}
   Uma observação.
 \end{obs}
