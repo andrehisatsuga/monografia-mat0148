@@ -57,7 +57,7 @@ Um pouco de texto\ldots
 	\[
 		\frac{e(A', B')}{|A'||B'|} < \frac{e(A, B)}{|A'||B'|} \leq \frac{e(A,B)}{(1-\eps)^2|A||B|} < (1+3\eps)\frac{e(A,B)}{|A||B|}\leq \frac{e(A,B)}{|A||B|} + 3\eps\,,
 	\]
-	donde $\frac{e(A',B')}{|A'||B'|} - \frac{e(A,B)}{|A||B|} < 3\eps$. Logo $\left| \frac{e(A,B)}{|A||B|} - \frac{e(A',B')}{|A'||B'|}\right| < 3\eps$, como queríamos.
+	donde $\frac{e(A',B')}{|A'||B'|} - \frac{e(A,B)}{|A||B|} < 3\eps$. Logo $\left| \frac{e(A,B)}{|A||B|} - \frac{e(A',B')}{|A'||B'|}\right| < 3\eps$, como queríamos demonstrar.
 	
 	\vskip 1em
 	
@@ -65,7 +65,7 @@ Um pouco de texto\ldots
 	
 	Dado $u\in A'$, temos que 
 	\[
-	|N(u)\cap B'|\geq (\delta-\eps)|B| - \eps|B| = (\delta - 2\eps)|B| = \left( \frac{e(A,B)}{m^2} - 2\eps\right) m\,.
+	|N(u)\cap B'|\geq (\delta-\eps)|B| - \eps|B| = (\delta - 2\eps)|B| = \left( \frac{e(A,B)}{m^2} - 2\eps\right)m\,.
 	\]
 	Analogamente, para $v\in B'$ temos que $|N(v)\cap A'|\geq \left( \frac{e(A,B)}{m^2} - 2\eps\right) m$. Logo o subgrafo $(A',B')$-bipartido tem grau mínimo maior ou igual a $\left( \frac{e(A,B)}{m^2} - 2\eps\right) m$.
 	
@@ -124,9 +124,9 @@ Um pouco de texto\ldots
 \begin{dem}
 	Dados $x'\in V'\setminus\bigcup_{P'\in \mathcal{P}'}V(P')$ e $y''\in V''\setminus\bigcup_{P''\in \mathcal{P}''}V(P'')$, queremos construir um caminho $P_{x'y''}$ passando por todos os vértices de $V'$ e $V''$ e todas as arestas de caminhos em $\mathcal{P}'$ e $\mathcal{P}''$. Faremos isso em três partes: primeiro, um caminho $P_{x'z''}$ saindo de $x'$ e cobrindo todos os caminhos de $\mathcal{P}'$ e $\mathcal{P}''$; segundo, um caminho $P_{z'y''}$ que termina em $y''$, com uma certa condição para que $P_{z'y''}$ tenha vários ``endpoints'' além de $z'$; e finalmente aplicaremos o Lema \ref{lema:haxell} nos vértices que sobraram para obter um caminho $P_{z''z'}$, de modo que o caminho final $P_{x'y''}$ consiste apenas de juntar $P_{x'z''}$, $P_{z''z'}$ e $P_{z'y''}$.
 	
-	Para o caminho $P_{x'z''}$, note que, dado um vértice $v'\in V'$ e outro vértice $v''\in V''$, podemos construir um caminho de tamanho três de $v'$ para $v''$ evitando qualquer subconjunto $A'\subset V'\setminus\{v\}$ com $|A'|\leq0.1m$ e qualquer subconjunto $B''\subset V''\setminus\{v''\}$ com $|B''|\leq0.1m$: basta considerar as vizinhanças de $v'$ e $v''$ e aplicar \ref{item:regularidade} para $(N(v')\cap V'')\setminus B''$ e $(N(v'')\cap V')\setminus A'$.
+	Para o caminho $P_{x'z''}$, note que, dado um vértice $v'\in V'$ e outro vértice $v''\in V''$, podemos construir um caminho de tamanho três de $v'$ para $v''$ evitando qualquer subconjunto $A'\subset V'\setminus\{v\}$ com $|A'|\leq0.1m$ e qualquer subconjunto $B''\subset V''\setminus\{v''\}$ com $|B''|\leq0.1m$: basta considerar as vizinhanças de $v'$ e $v''$ e aplicar o item \ref{item:regularidade} para $(N(v')\cap V'')\setminus B''$ e $(N(v'')\cap V')\setminus A'$.
 	
-	Com isso, basta construir $P_{x'z''}$ de forma gulosa, saindo de $x'$ e percorrendo os caminhos em $\mathcal{P}'$ e $\mathcal{P}''$, gastando caminhos de tamanho três para conectar uma ponta de um caminho de $\mathcal{P}'$ com a ponta de um caminho de $\mathcal{P}''$, e gastando caminhos de tamanho quatro para conectar pontas de dois caminhos em $\mathcal{P}'$ ou dois caminhos de $\mathcal{P}''$ (é só primeiro ir para o outro lado e então usar um caminho de tamanho três). Desse modo, conseguimos obter um caminho $P_{x'z''}$ que começa em $x'$, termina em $z''\in V''$, passa por todas as arestas dos caminhos de $\mathcal{P}'$ e $\mathcal{P}''$, e que satisfaz
+	Com isso, basta construir $P_{x'z''}$ de forma gulosa, saindo de $x'$ e percorrendo os caminhos em $\mathcal{P}'$ e $\mathcal{P}''$, utilizando caminhos de tamanho três para conectar uma ponta de um caminho de $\mathcal{P}'$ com a ponta de um caminho de $\mathcal{P}''$, e utilizando caminhos de tamanho quatro para conectar pontas de dois caminhos em $\mathcal{P}'$ ou dois caminhos de $\mathcal{P}''$ (é só primeiro ir para o outro lado e então usar um caminho de tamanho três). Desse modo, conseguimos obter um caminho $P_{x'z''}$ que começa em $x'$, termina em $z''\in V''$, passa por todas as arestas dos caminhos de $\mathcal{P}'$ e $\mathcal{P}''$, e que satisfaz
 	\begin{align*}
 	|V(P_{x'z''})\cap V'|\leq 1 + 3(r' + r'')&\leq 0.04m \,,\\
 	|V(P_{x'z''})\cap V'|\leq 1 + 3(r' + r'')&\leq 0.04m \,.
@@ -152,7 +152,7 @@ Um pouco de texto\ldots
 		290\tilde{x}\geq16m - 10k\geq16m - 10m = 6m \\
 		\Longrightarrow \tilde{x}\geq \frac{6m}{290} > 0.02m\,.
 	\end{gather*}
-	Assim, por \ref{item:regularidade}, existe uma aresta entre $\{v\in P: |N(v)\cap Q|>0.001m\}$ e $(N(z_0')\cap V'')\setminus(V(P_{x'z''})\cup V(P_{z_0'y''}))$, logo o caminho $P_{z_0'y''}$ pode ser estendido para um caminho $P_{z'y''}$ tal que $|V(P_{z'y''})| = 2\lfloor0.03m\rfloor$ e $z'$ tem pelo menos $0.001m$ vizinhos em $V(P_{z'y''})\cap V''$. Cada vizinho desses dá um ``endpoint'', isto é, existe $S'\subset V(P_{z'y''})$, $|S'|\geq0.001m$, tal que para todo $s'\in S'$ existe um caminho começando em $y''$ e terminando em $s'$, e que percorre os mesmos vértices de $P_{z'y''}$.
+	Assim, pelo item \ref{item:regularidade}, existe uma aresta entre $\{v\in P: |N(v)\cap Q|>0.001m\}$ e $(N(z_0')\cap V'')\setminus(V(P_{x'z''})\cup V(P_{z_0'y''}))$, logo o caminho $P_{z_0'y''}$ pode ser estendido para um caminho $P_{z'y''}$ tal que $|V(P_{z'y''})| = 2\lfloor0.03m\rfloor$ e $z'$ tem pelo menos $0.001m$ vizinhos em $V(P_{z'y''})\cap V''$. Cada vizinho desses dá um ``endpoint'', isto é, existe $S'\subset V(P_{z'y''})$, $|S'|\geq0.001m$, tal que para todo $s'\in S'$ existe um caminho começando em $y''$ e terminando em $s'$, e que percorre os mesmos vértices de $P_{z'y''}$.
 	
 	Agora, basta notar que o subgrafo bipartido induzido por $V'\setminus(V(P_{x'z''})\cup V(P_{z'y''}))$ e $V''\setminus(V(P_{x'z''})\cup V(P_{z'y''}))$ é $(10^{-5}, 0.07)$-uniforme, logo pelo Lema \ref{lema:haxell}, existe um circuito hamiltoniano $C$ percorrendo tais vértices.
 	
@@ -168,7 +168,7 @@ Um pouco de texto\ldots
 \end{lema}
 
 \begin{proof}
-	Tome um maior caminho $P = u_1\dots u_kv_1\dots v_l$ tal que cada aresta $u_iu_{i+1}$ é azul e $u_kv_1$, $v_1v_2, \dots, v_{l-1}v_l$ são vermelhas. Vamos provar que $P$ é um caminho hamiltoniano. De fato, se $w\notin V(P)$, então considere a aresta $wu_k$. Suponha, sem perda de generalidade, que $wu_k$ é azul. Então o caminho $\tilde{P} = u_1\dots u_k w v_1\dots v_l$ é maior que $P$ e é composto de um caminho azul seguido de um caminho vermelho, absurdo. Logo $P$ é caminho hamiltoniano. 
+	Tome um maior caminho $P = u_1\dots u_kv_1\dots v_l$ tal que cada aresta $u_iu_{i+1}$ é azul e as arestas $u_kv_1$, $v_1v_2, \dots, v_{l-1}v_l$ são vermelhas. Vamos provar que $P$ é um caminho hamiltoniano. De fato, se $w\notin V(P)$, então considere a aresta $wu_k$. Suponha, sem perda de generalidade, que $wu_k$ é azul. Então o caminho $\tilde{P} = u_1\dots u_k w v_1\dots v_l$ é maior que $P$ e é composto de um caminho azul seguido de um caminho vermelho, absurdo. Logo $P$ é caminho hamiltoniano. 
 	
 	Suponha, sem perda de generalidade, que $v_lu_1$ é vermelho (se $P = u_1\dots u_k$, troque $v_l$ por $u_k$). Suponha também, sem perda de generalidade, que $u_1u_k$ é azul. Se $l=0$, isto é, $P=u_1\dots u_k$ com $u_1u_k$ azul, então $P$ é um circuito hamiltoniano azul, e temos partição tomando $C^r$ vazio. Se $l=1$, então temos partição de $V(K_n)$ em um circuito azul e um único vértice como circuito vermelho. Suponha então $l\geq2$. Caso $v_1v_l$ seja vermelho, temos partição com $C^b = u_1\dots u_k$ e $C^r = v_1\dots v_l$. Caso $v_1u_1$ seja vermelho, tome $C^b = u_1\dots u_k$ e $C^r = v_1\dots v_lu_1$. Caso $u_kv_l$ seja vermelho, tome $C^b = u_1\dots u_k$ e $C^r = u_kv_1\dots v_l$. Podemos supor, então, que $u_kv_l$, $v_lv_1$ e $v_1u_1$ são azuis. Mas então $Q = u_kv_lv_1u_1\dots u_k$ é um circuito azul. Troque $P$ por $v_1u_1\dots u_kv_l\dots v_2$ e repita o argumento. Como $l$ diminui de dois em dois a cada passo, eventualmente caímos em $l=0$ ou $l=1$, o que encerra a prova.
 \end{proof}
@@ -265,8 +265,8 @@ Sejam $\eps = 10^{-60}$ e $k_0 = 2/\eps$. Seja $K_0 = K_0(\eps, k_0)$ a constant
 
 Seja $n\geq n_0$ e considere uma coloração arbitrária das arestas de $K_n$ em vermelho e azul. Queremos provar que existe uma partição de $V(K_n)$ em dois circuitos monocromáticos, um vermelho e outro azul.
 
-Seja $R$ o grafo induzido pelas arestas vermelhas e $B$ o induzido pelas arestas azuis. Vamos supor, sem perda de generalidade, que o número de arestas vermelhas é maior ou igual ao número de arestas azuis, ou seja, que pelo menos metade das arestas são vermelhas, i.e., $E(R)\geq \frac{1}{2}\binom{n}{2}$. 
-Se a coloração das arestas de $K_n$ satisfaz as hipóteses do Lema \ref{lema:bipartido_azul}, então existe a partição desejada e não há mais nada o que fazer. Logo, podemos supor que isso não ocorre, de modo que podemos usar o Fato \ref{fato:caminhos_vermelhos} para $k\leq K_0$.
+Seja $R$ o grafo induzido pelas arestas vermelhas e $B$ o induzido pelas arestas azuis. Vamos supor, sem perda de generalidade, que o número de arestas vermelhas é maior ou igual ao número de arestas azuis, ou seja, que pelo menos metade das arestas são vermelhas, i.e., $e(R)\geq \frac{1}{2}\binom{n}{2}$. 
+Se a coloração das arestas de $K_n$ satisfaz as hipóteses do Lema \ref{lema:bipartido_azul}, então existe a partição desejada e não há mais nada o que provar. Logo, podemos supor que isso não ocorre, de modo que podemos usar o Fato \ref{fato:caminhos_vermelhos} para $k\leq K_0$.
 
 Começamos aplicando o Lema da Regularidade de Szemerédi para $G = R$, obtendo uma partição $(\eps, \hat{k}, R)$-regular $\hat{\Pi} = (\hat{V}_0, \hat{V}_1, \dots, \hat{V}_{\hat{k}})$, com $k_0\leq \hat{k}\leq K_0$. Lembre que um par $(\eps, R)$-regular é também $(\eps, B)$-regular; vamos dizer que tais pares são \emph{regulares}. Sobre $\hat{\Pi}$, temos que:
 \begin{align*}
@@ -278,7 +278,7 @@ Começamos aplicando o Lema da Regularidade de Szemerédi para $G = R$, obtendo 
 
 Apesar de $\hat{\Pi}$ ter poucos pares não-regulares, podem haver $\hat{V}_i$'s que são não-regulares com, por exemplo, todos os outros $\hat{V}_j$'s. Vamos tirar esses $\hat{V}_i$'s que são não-regulares com muitos outros $\hat{V}_j$'s da partição e colocá-los em $\hat{V}_0$. Mais especificamente, seja $\bar{V}_0$ o conjunto formado pela união de $\hat{V}_0$ com os $\hat{V}_i$ que são não-regulares com mais de $2\eps^{1/2}(1-\eps^{1/2})\hat{k}$ outros $\hat{V}_j$, e sejam $\bar{V}_1, \dots, \bar{V}_k$ os $\hat{V}_i$ que sobraram. Temos então uma partição $\bar{\Pi} = (\bar{V}_0, \bar{V}_1, \dots, \bar{V}_k)$ com $k\leq \hat{k}$. Como a quantidade de pares não-regulares é menor que $\eps\hat{k}^2/2$, a quantidade de $\hat{V}_i$'s que entraram em $\bar{V}_0$ é no máximo
 \[
-	\frac{\eps\hat{k}^2}{2\eps^{1/2}(1-\eps^{1/2})\hat{k}} = \frac{\eps^{1/2}\hat{k}}{2(1-\eps^{1/2})} = \eps^{1/2}\hat{k}\,.
+	\frac{\eps\hat{k}^2}{2\eps^{1/2}(1-\eps^{1/2})\hat{k}} = \frac{\eps^{1/2}\hat{k}}{2(1-\eps^{1/2})} < \eps^{1/2}\hat{k}\,.
 \]
 Logo $k\geq(1-\eps^{1/2})\hat{k}>\frac{\hat{k}}{2}\geq 1/\eps$, e cada $\bar{V}_i$ é não-regular com no máximo $2\eps^{1/2}(1-\eps^{1/2})\hat{k} < 2\eps^{1/2}k$ outros $\bar{V}_j$. Por fim, $|\bar{V}_0|\leq \eps n + \eps^{1/2}\hat{k}\frac{n}{\hat{k}}<2\eps^{1/2}n$.
 
@@ -312,21 +312,75 @@ Vamos provar que $\Gamma_R$ contém um casamento cobrindo mais de $0.2k$ vértic
 
 Com o que temos até agora, conseguimos definir uma ``primeira tentativa'' de encontrar os dois circuitos monocromáticos desejados. Mais especificamente, teremos uma partição de $V(K_n)$ em três conjuntos, $\tilde{V}^r$, $\tilde{V}^b$ e $\tilde{V}_0$, de modo que existe um circuito vermelho cobrindo exatamente $\tilde{V}^r$, um circuito azul cobrindo $\tilde{V}^b$ e o conjunto de sobra $\tilde{V}_0$ é pequeno. Mais do que apenas os circuitos, $\tilde{V}^r$ e $\tilde{V}^b$ terão estrutura suficiente de modo a ser possível adicionar vértices de $\tilde{V}_0$ um por um neles mantendo a existência de circuitos monocromáticos que cobrem $\tilde{V}^r$ e $\tilde{V}^b$. Em $\tilde{V}^r$, a estrutura será dada por $s$ pares de conjuntos de vértices satisfazendo as condições do Lema \ref{lema:caminho_hamiltoniano}, e $\tilde{V}^b$ será tal que o subgrafo de $B$ induzido por $\tilde{V}^b$ tem grau mínimo $0.7|\tilde{V}^b|$. Sem mais delongas, vamos às definições precisas.
 
-Para cada $i\in [s]$, como o par $(\bar{V}_{2i-1}, \bar{V}_{2i})$ é regular, temos pela Proposição \ref{prop:remocao_de_grau_pequeno} que existem $V'_{2i-1}\subseteq\bar{V}_{2i-1}$, $V'_{2i}\subseteq\bar{V}_{2i}$ tais que $|V'_{2i-1}| = |V'_{2i}|\geq (1-\eps)|\bar{V}_{2i-1}|$, o par $(V'_{2i-1}, V'_{2i})$ é $(4\eps, R)$-regular, e todo vértice em $V'_{2i-1}$ tem pelo menos $(0.2-2\eps)|\bar{V}_{2i-1}|$ vizinhos vermelhos em $V'_{2i}$, e vice-versa. Pelo Fato \ref{fato:caminhos_vermelhos}, existem caminhos vermelhos $P_1, \dots, P_s$ vértice-disjuntos, cada um de comprimento no máximo $10k$, tal que $P_1$ tem um extremo em $V'_2$ e outro em $V'_3$, $P_2$ tem um extremo em $V'_4$ e outro em $V'_5$, e assim por diante, $P_{s-1}$ tem um extremo em $V'_{2s-2}$ e outro em $V'_{2s-1}$, e $P_s$ tem um extremo em $V'_{2s}$ e outro em $V'_1$. Para fechar um circuito vermelho, vamos usar o Lema \ref{lema:caminho_hamiltoniano} dentro de cada par $(V'_{2i-1}, V'_{2i})$, mas como os caminhos $P_i$ podem ter usado vértices dos $V'_i$, precisamos balancear cada par $(V'_{2i-1}, V'_{2i})$ para aplicar tal lema. Vamos denominar então os vértices de $\bigcup_{i=1}^{s}V(P_i)$ de \emph{inativos}, e vamos nos referir aos vértices que ainda não foram ``inativados'' como os vértices \emph{ativos} (ao longo do argumento, mais vértices serão ``inativados''; os vértices ativos são aqueles que não foram ``inativados'' em nenhum momento anterior). Escolhemos então subconjuntos $V_j\subseteq V'_j$, com $|V_j|\geq |V'_j| - 5k^2$ tais que, para cada $i\in [s]$, os conjuntos $V_{2i-1}$ e $V_{2i}$ tem o mesmo número de vértices ativos. Agora sim, aplicamos o Lema \ref{lema:caminho_hamiltoniano} em cada par $(V_{2i-1}\setminus\bigcup_{i=1}^{2s} V(P_i), V_{2i}\setminus\bigcup_{i=1}^{2s} V(P_i))$, para $r'=r''=0$, garantindo a existência de caminhos ligando extremos dos caminhos $P_1, \dots, P_s$, de modo que todos esses caminhos juntos formam um circuito vermelho que cobre $\tilde{V}^r\coloneqq(\bigcup_{i=1}^{2s}V_i)\cup (\bigcup_{i=1}^{s}V(P_i))$.
+Para cada $i\in [s]$, como o par $(\bar{V}_{2i-1}, \bar{V}_{2i})$ é regular, temos pela Proposição \ref{prop:remocao_de_grau_pequeno} que existem $V'_{2i-1}\subseteq\bar{V}_{2i-1}$, $V'_{2i}\subseteq\bar{V}_{2i}$ tais que $|V'_{2i-1}| = |V'_{2i}|\geq (1-\eps)|\bar{V}_{2i-1}|$, o par $(V'_{2i-1}, V'_{2i})$ é $(4\eps, R)$-regular, e todo vértice em $V'_{2i-1}$ tem pelo menos $(0.2-2\eps)|\bar{V}_{2i-1}|$ vizinhos vermelhos em $V'_{2i}$, e vice-versa. Pelo Fato \ref{fato:caminhos_vermelhos}, existem caminhos vermelhos $P_1, \dots, P_s$ vértice-disjuntos, cada um de comprimento no máximo $10k$, tal que $P_1$ tem um extremo em $V'_2$ e outro em $V'_3$, $P_2$ tem um extremo em $V'_4$ e outro em $V'_5$, e assim por diante, $P_{s-1}$ tem um extremo em $V'_{2s-2}$ e outro em $V'_{2s-1}$, e $P_s$ tem um extremo em $V'_{2s}$ e outro em $V'_1$. Para fechar um circuito vermelho, vamos usar o Lema \ref{lema:caminho_hamiltoniano} dentro de cada par $(V'_{2i-1}, V'_{2i})$, mas, como os caminhos $P_i$ podem ter usado vértices dos $V'_i$, precisamos balancear cada par $(V'_{2i-1}, V'_{2i})$ para aplicar tal lema. Vamos denominar então os vértices de $\bigcup_{i=1}^{s}V(P_i)$ de \emph{inativos}, e vamos nos referir aos vértices que ainda não foram ``inativados'' como os vértices \emph{ativos} (ao longo do argumento, mais vértices serão ``inativados''; os vértices ativos são aqueles que não foram ``inativados'' em nenhum momento anterior). Escolhemos então subconjuntos $V_j\subseteq V'_j\setminus\bigcup_{i=1}^{s}V(P_i)$, com $|V_j|\geq |V'_j| - 5k^2$ tais que, para cada $i\in [s]$, os conjuntos $V_{2i-1}$ e $V_{2i}$ têm o mesmo número de vértices ativos. Agora sim, aplicamos o Lema \ref{lema:caminho_hamiltoniano} em cada par $(V_{2i-1}\setminus\bigcup_{i=1}^{2s} V(P_i), V_{2i}\setminus\bigcup_{i=1}^{2s} V(P_i))$, para $r'=r''=0$, garantindo a existência de caminhos ligando extremos dos caminhos $P_1, \dots, P_s$, de modo que todos esses caminhos juntos formam um circuito vermelho que cobre $\tilde{V}^r\coloneqq(\bigcup_{i=1}^{2s}V_i)\cup (\bigcup_{i=1}^{s}V(P_i))$.
 
-Para definir $\tilde{V}^b$, separamos em dois casos. Se $k-2s$ é pequeno, i.e., se os conjuntos $V_{2s+1},\dots, V_k$ que sobraram são poucos, então não temos muita estrutura entre eles (podem ser todos pares pretos no grafo reduzido). Nesse caso, colocamos tudo em $\tilde{V}_0$. Mais precisamente, se $k-2s\leq\eps^{1/3}k$, definimos $\tilde{V}^b = \emptyset$ e $\tilde{V}_0 = V(K_n)\setminus \tilde{V}^r$. Para $k-2s>\eps^{1/3}k$, defina $W = V'_{2s+1}\cup\dots\cup V'_{k}$ e $W'\subseteq W$ como o conjunto dos vértices de $W$ que tem menos de $0.75|W|$ vizinhos azuis em $W$. Como $\{\{1,2\}, \dots, \{2s-1, 2s\}\}$ é casamento máximo de $\Gamma_R$, temos que todos os pares $\{i,j\}$ com $2s+1\leq i < j \leq k$ são pretos ou azuis, e cada $i\in\{2s+1,\dots,k\}$ está em no máximo $2\eps^{1/2}$ pares pretos. Vamos provar que, para todo $i\in\{2s+1,\dots,k\}$, $|\bar{V}_i\cap W'|\leq\eps|\bar{V}_i|$. Suponha, por absurdo, que $|\bar{V}_i\cap W'| > \eps|\bar{V}_i|$. Então, para cada $j\in\{2s+1,\dots,k\}$ tal que $\{i,j\}$ é azul, temos por regularidade que:
+Para definir $\tilde{V}^b$, separamos em dois casos. Se $k-2s$ é pequeno, i.e., se os conjuntos $\bar{V}_{2s+1},\dots, \bar{V}_k$ que sobraram são poucos, então não temos muita estrutura entre eles (podem ser todos pares pretos no grafo reduzido). Nesse caso, colocamos tudo em $\tilde{V}_0$. Mais precisamente, se $k-2s\leq\eps^{1/3}k$, definimos $\tilde{V}^b = \emptyset$ e $\tilde{V}_0 = V(K_n)\setminus \tilde{V}^r$. Para $k-2s>\eps^{1/3}k$, defina $W = \bar{V}_{2s+1}\cup\dots\cup \bar{V}_{k}$ e $W'\subseteq W$ como o conjunto dos vértices de $W$ que têm menos de $0.75|W|$ vizinhos azuis em $W$. Como $\{\{1,2\}, \dots, \{2s-1, 2s\}\}$ é casamento máximo de $\Gamma_R$, temos que todos os pares $\{i,j\}$ com $2s+1\leq i < j \leq k$ são pretos ou azuis, e cada $i\in\{2s+1,\dots,k\}$ está em no máximo $2\eps^{1/2}k$ pares pretos. Vamos provar que, para todo $i\in\{2s+1,\dots,k\}$, $|\bar{V}_i\cap W'|\leq\eps|\bar{V}_i|$. Suponha, por absurdo, que $|\bar{V}_i\cap W'| > \eps|\bar{V}_i|$. Então, para cada $j\in\{2s+1,\dots,k\}$ tal que $\{i,j\}$ é azul, temos por regularidade que:
 \begin{align*}
 	\left|\frac{e_B(\bar{V}_i\cap W', \bar{V}_j)}{|\bar{V}_i\cap W'||\bar{V}_j|} - \frac{e_B(\bar{V}_i,\bar{V}_j)}{|\bar{V}_i||\bar{V}_j|}\right| < \eps \quad
 	\Longrightarrow \quad \frac{e_B(\bar{V}_i\cap W', \bar{V}_j)}{|\bar{V}_i\cap W'||\bar{V}_j|} > 0.8 - \eps\,.
 \end{align*}
-
 Logo $e_B(\bar{V}_i\cap W', \bar{V}_j) > (0.8-\eps)|\bar{V}_i\cap W'||\bar{V}_j| = (0.8-\eps)|\bar{V}_i\cap W'|\frac{|W|}{k-2s}$. Como há pelo menos $k - 2s - 1 - 2\eps^{1/2}k$ pares azuis contendo $i$, temos que 
 \begin{align*}
 	e(\bar{V}_i\cap W', W\setminus\bar{V}_i) &\geq (k-2s-1-2\eps^{1/2}k)(0.8 - \eps)|\bar{V}_i\cap W'|\frac{|W|}{k-2s} \\
-	&> (1 - \frac{3\eps^{1/2}k}{\eps^{1/3}k})(0.8 - \eps)|\bar{V}_i\cap W'||W| \\
+	&> \left(1 - \frac{3\eps^{1/2}k}{\eps^{1/3}k}\right)(0.8 - \eps)|\bar{V}_i\cap W'||W| \\
 	&> 0.75|\bar{V}_i\cap W'||W|.
 \end{align*}
-Logo algum vértice de $\bar{V}_i\cap W'$ tem mais de $0.75|W|$ vizinhos azuis em $W$, absurdo.
+Logo algum vértice de $\bar{V}_i\cap W'$ tem mais de $0.75|W|$ vizinhos azuis em $W$, absurdo. Portanto, $|W'| = \sum_{i=2s+1}^{k}|\bar{V}_i\cap W'|\leq\sum_{i=2s+1}^k\eps|\bar{V}_i| = \eps |W|$. Sejam $V_i = \bar{V}_i\setminus W'$, para $i\in \{2s+1,\dots,k\}$, e $\tilde{V}^b = \bigcup_{i=2s+1}^kV_i = W\setminus W'$. Então todo vértice de $\tilde{V}^b$ tem pelo menos $0.75|W| - |W'| > 0.7|\tilde{V}^b|$ vizinhos azuis em $\tilde{V}^b$. Em particular, pelo teorema de Dirac, existe um circuito azul cobrindo exatamente $\tilde{V}^b$. E, finalmente, defina $\tilde{V}_0 = V(K_n)\setminus(\tilde{V}^r\cup\tilde{V}^b)$.
+
+Temos então uma partição $V(K_n) = \tilde{V}^r\cup\tilde{V}^b\cup\tilde{V}_0$, com
+\[
+	|\tilde{V}_0|\leq\begin{cases}
+	2\eps^{1/3}n\,, \quad \text{se}\quad \tilde{V}^b=\emptyset\,,\\
+	4\eps^{1/2}n\,, \quad \text{se}\quad \tilde{V}^b\neq\emptyset\,.
+	\end{cases}
+\]
+
+A partir de agora, vamos para a parte mais delicada da prova, que consiste em incluir cada vértice de $\tilde{V}_0$ em $\tilde{V}^r$ ou $\tilde{V}^b$, mantendo estrutura suficiente em cada parte de modo a garantir os circuitos monocromáticos ao final. Por isso, vamos sempre tomar cuidado em não ``gastar'' muitos vértices de um mesmo $V_i$, e também não incorporar muitos vértices de $\tilde{V}_0$ em um mesmo par $(V_{2i-1}, V_{2i})$, por exemplo. Como o argumento terá várias etapas, vamos colorir um vértice de \emph{rosa} como indicativo de que tal vértice foi reservado para o circuito vermelho, e \emph{ciano} se tal vértice foi reservado para o circuito azul. Qualquer vértice colorido em rosa ou ciano é automaticamente declarado como inativo, se juntando aos $V(P_i)$ considerados anteriormente.
+
+Para cada vértice $v$ de $\tilde{V}_0$, vamos inativar no máximo 4 vértices de um mesmo $V_i$, e não mais do que 8 vértices ao todo, sem contar o próprio $v$. Em vista do Lema \ref{lema:caminho_hamiltoniano}, vamos criar não mais do que $0.005|V_i|$ caminhos vermelhos para cada $V_i$. Como cada caminho vermelho inclui dois vértices em $V_i$ que ficam inativados, vamos permitir no máximo $0.01|V_i|$ vértices inativos em $V_i$. Dizemos que $V_i$ está \emph{saturado} se $V_i$ possui mais de $0.009|V_i| - 4$ vértices inativos. Caso contrário, dizemos que $V_i$ está \emph{insaturado}.
+
+Se $\tilde{V}^b = \emptyset$, então o número total de vértices inativos sempre estará limitado superiormente por 
+\[
+	8|\tilde{V}_0| + 6k^2 \leq 16\eps^{1/3}n + \frac{\eps n}{20} \leq 17\eps^{1/3}n < 0.0001k(n/k)\,,
+\]
+de modo que é impossível termos mais do que $0.02k$ conjuntos $V_i$ com mais do que $0.008n/k < 0.009|V_i| - 4$ vértices inativos, e portanto, nunca teremos mais do que $0.02k$ conjuntos $V_i$ saturados.
+
+Se $\tilde{V}^b\neq\emptyset$, então o número total de vértices inativos é limitado superiormente por 
+\[
+	8|\tilde{V}_0| + 6k^2 \leq 32\eps^{1/2}n + \frac{\eps n}{20} < 33\eps^{1/2}n < \eps^{2/5}n/250\,,
+\] 
+de modo que, nesse caso, nunca teremos mais do que $\eps^{2/5}k/2$ conjuntos $V_i$ saturados. 
+
+Vamos, a partir de agora, tratar e resolver completamente o caso $\tilde{V}^b\neq \emptyset$. Temos $|\tilde{V}^b| = |W\setminus W'|\geq (1-\eps)^2(1-2\eps^{1/2})\eps^{1/3}n > \eps^{1/3}n/2$. Como vamos explorar a relação dos conjuntos $V_1,\dots,V_{2s}$ com os conjuntos $V_{2s+1},\dots,V_k$, vamos dizer que um conjunto $V_i$, $1\leq i\leq 2s$, é \emph{vermelho-dominado} se o número de pares vermelhos $\{i,j\}$, com $2s+1\leq j\leq k$, é maior ou igual a $\eps^{2/5}k$. Caso contrário, diremos que $V_i$ é \emph{azul-dominado}.
+
+Neste parágrafo, uma lista de observações será feita, que justificam os argumentos seguintes e os casos considerados. Recomendo ao leitor que faça apenas uma primeira leitura do que está aqui e vá para os próximos parágrafos, voltando quando estiver mais claro quais são os usos de cada afirmação. Primeiramente, como tomamos $\{\{1,2\},\dots,\{2s-1,2s\}\}$ um casamento máximo de $\Gamma_R$, então, para todo $i\in [s]$, não podem existir $j_1,j_2\in \{2s+1,\dots,k\}$ distintos tais que $\{2i-1,j_1\}$ e $\{2i, j_2\}$ sejam ambos pares vermelhos. Por conta disso, no máximo um dos conjuntos $V_{2i-1}$ e $V_{2i}$ é vermelho-dominado. Em segundo lugar, se $V_i$ é vermelho-dominado, então existe $V_j$ insaturado, com $j\in\{2s+1,\dots,k\}$ tal que $\{i,j\}$ é vermelho (pois temos $\eps^{2/5}k$ pares vermelhos contendo $i$, e no máximo $\eps^{2/5}k/2$ deles envolvem um $V_j$ saturado). Para tal $V_j$, existem $x_1, x_2\in V_j$ vértices ativos, e existem $y_1,y_2,z_1,z_2\in V_i$ também ativos tais que $y_1x_1z_1$ e $y_2x_2z_2$ são caminhos vermelhos vértice-disjuntos (pois, como $\frac{e(V_i,V_j)}{|V_i||V_j|}>0.15$, há no máximo $0.95|V_j|$ vértices de $V_j$ com menos de $0.1|V_i|$ vizinhos vermelhos em $V_i$, logo há pelo menos $0.04|V_j|$ vértices ativos de $V_j$ com pelo menos $0.1|V_i|$ vizinhos vermelhos em $V_i$, e então basta tomar $x_1$ e $x_2$ como sendo dois desses vértices de $V_j$, e quaisquer vizinhos vermelhos ativos $y_1,z_1$ de $x_1$ e $y_2,z_2$ de $x_2$). Por último, se $V_i$ é azul-dominado, então
+\[
+	|\{j\in\{2s+1,\dots,k\}: \{i,j\} \text{ não é azul}\}| < \eps^{2/5}k + 2\eps^{1/2}k < 2\eps^{2/5}k \leq 2\eps^{1/15}(k-2s)\,. 
+\]
+Logo, se $j_1,\dots,j_t\in\{2s+1,\dots,k\}$ são os índices $j$ tais que $\{i,j\}$ é azul, então
+\begin{align*}
+	e(V_i, V_{2s+1}\cup\dots\cup V_k)&\geq 0.75|V_i||V_{j_1}\cup\dots\cup V_{j_t}|\\
+	&\geq 0.75|V_i|(1-\eps)^2(1-2\eps^{1/15})|V_{2s+1}\cup\dots\cup V_k|\\
+	&\geq 0.7|V_i||V_{2s+1}\cup\dots\cup V_k|\,.
+\end{align*}
+Isso nos permite garantir que há pelo menos $\frac{1}{7}|V_i|$ vértices em $V_i$ com pelo menos $0.65|V_{2s+1}\cup\dots\cup V_k| = 0.65|\tilde{V}^b|$ vizinhos azuis em $\tilde{V}^b$.
+
+Agora, vamos descrever como lidar com cada vértice de $\tilde{V}_0$. Dado $v\in \tilde{V}_0$, nosso objetivo é marcar $v$ de rosa ou ciano, inativando no máximo 8 outros vértices de $K_n$, e repetir tal processo para cada vértice de $\tilde{V}_0$.
+Vamos tomar um par $(V_{2i-1},V_{2i})$, com $i\in[s]$, tal que ambos $V_{2i-1}$ e $V_{2i}$ estão insaturados, e assuma que $v$ possui dois vizinhos vermelhos ativos $w$ e $w'$ em um dentre $V_{2i-1}$ e $V_{2i}$, digamos $w,w'\in V_{2i-1}$. Então consideramos apenas dois casos.
+\setcounter{caso}{0}
+\begin{caso}
+	\emph{$V_{2i}$ é vermelho-dominado.}\\
+	Dado $V_j$ insaturado, $j\in\{2s+1,\dots,k\}$, tome $x\in V_j$ ativo, e $y,z\in V_{2i}$ vizinhos vermelhos ativos de $x$.\\
+	Marque de rosa os seis vértices $v,w,w',x,y,z$.
+\end{caso}
+
+\begin{caso}
+	\emph{$V_{2i}$ é azul-dominado}\\
+	Tome $x\in V_{2i}$ tal que $x$ tem pelo menos $0.65|\tilde{V}^b|$ vizinhos azuis em $\tilde{V}^b$.
+	Marque os vértices $v,w,w'$ de rosa e $x$ de ciano.
+\end{caso}
+
+Suponha agora que $v$ tem no máximo um vizinho vermelho ativo tanto em $V_{2i-1}$ quanto em $V_{2i}$. Então temos novamente dois casos.
 
 \begin{obs}
   Uma observação.
