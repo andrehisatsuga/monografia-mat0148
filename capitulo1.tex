@@ -1,13 +1,23 @@
 \chapter{Meu Primeiro Capítulo}
 
-Um pouco de texto\ldots
+\begin{teo}[Ramsey]
+	Toda coloração das arestas de $K_n$ em duas cores admite uma cópia monocromática de um clique $K_t$ de ordem $t = \lfloor\frac{1}{2}\log_2n\rfloor$.
+\end{teo}
 
-\section{Minha Primeira Seção}
+\begin{teo}[Gerencsér, Gyárfás]
+	Toda coloração das arestas de $K_n$ em duas cores admite uma cópia monocromática de um caminho $P_t$ de ordem $t = \left\lceil\frac{2(n-1)}{3}\right\rceil$.
+\end{teo}
+
+
+
+\section{Introdução}
 
 \begin{teo}
   \label{teo_principal}
   Existe $n_0$ natural tal que, para todo $n\geq n_0$, a seguinte afirmação é verdadeira: para qualquer coloração das arestas de $K_n$ em vermelho e azul, existe uma partição do conjunto dos vértices de $K_n$ em dois circuitos monocromáticos, um vermelho e outro azul.
 \end{teo}
+
+\section{Lema de Regularidade}
 
 \begin{defi}
 	Dado um grafo $G$ e $A, B \subseteq V(G)$ tais que $A\cap B = \emptyset$, dizemos que $(A,B)$ é um par $(\eps,G)$-regular (onde $\eps>0$), ou simplesmente $\eps$-regular, se para todo $X\subseteq A$, $Y\subseteq B$ com $\lvert X\rvert\geq\eps\lvert A\rvert$, $\lvert Y\rvert\geq\eps\lvert B\rvert$, temos
@@ -81,7 +91,17 @@ Um pouco de texto\ldots
 	\end{enumerate}
 \end{lema}
 
-\begin{lema}\label{lema:haxell}
+\section{Circuitos e caminhos hamiltonianos em grafos bipartidos regulares}
+
+Um clássico teorema que garante a existência de circuitos hamiltonianos em grafos simples é o teorema de Dirac.
+
+\begin{teo}[Dirac]
+	Seja $n\geq3$ um inteiro. Se $G$ é um grafo com $n$ vértices e grau mínimo $\delta(G)\geq n/2$, então $G$ é hamiltoniano, isto é, $G$ possui um circuito hamiltoniano.
+\end{teo}
+
+No entanto, para grafos bipartidos, o teorema de Dirac não pode ser aplicado sequer para o grafo $K_{m,m}$ com uma aresta a menos. Vamos precisar, então, de um resultado específico que garante, por exemplo, que grafos bipartidos balanceados quase completos são hamiltonianos, desde que suas arestas estejam razoavelmente distribuídas.
+
+\begin{lema}[Haxell \cite{Hax97}]\label{lema:haxell}
 	Seja $0<\eps<1/7$. Seja ainda $G$ um grafo $(V_1, V_2)$-bipartido tal que $|V_1| = |V_2| = m\geq1/\eps$. Suponha que $G$ tem grau mínimo maior ou igual a $7\eps m$, e que para qualquer par de subconjuntos $A\subseteq V_1$ e $B\subseteq V_2$ tal que $|A|,|B|\geq \eps m$, existe uma aresta ligando $A$ a $B$ (isto é, $e(A, B)\geq1$). Então $G$ é hamiltoniano.
 \end{lema}
 
@@ -101,6 +121,8 @@ Um pouco de texto\ldots
 	Dado um caminho $P_0 = x_1x_2\dots x_k$ em $K$, com $k\leq 4t-1$, suponha, sem perda de generalidade, que $x_1\in X$, e queremos provar que $K$ contém um caminho de $k+1$ vértices. Seja $U$ o conjunto de endpoints de $P_0$ relativo a $x_k$. Se $N(U)\not\subseteq V(P_0)$, então encontramos um caminho de $k+1$ vértices de $v_k$ a um vizinho de um endpoint de $P_0$. Então, podemos supor que $N(U)\subseteq V(P_0)$. Vejamos que $|U|\geq t$. Com efeito, se $|U|<t$, então $|N(U)|\geq2|U|$. Como o conjunto $\{x_2\}\cup\bigcup_{x_i\in U\setminus\{x_2\}}\{x_{i-1}, x_{i+1}\}$ tem no máximo $2|U|-1$ elementos, existe um vértice $w\in N(U)\setminus(\{x_2\}\cup\bigcup_{x_i\in U\setminus\{x_2\}}\{x_{i-1}, x_{i+1}\})$. Veja que os vizinhos de $w$ em qualquer transformação de $P_0$ são os mesmos que em $P_0$. Além disso, os vizinhos de $w$ não pertencem a $U$. Mas uma aresta que liga $w$ a $U$ dá uma transformação de $P_0$ que tem um vizinho de $w$ como endpoint, absurdo.  Agora, aplique a condição de $(t,2)$-expanding para um subconjunto de $t$ elementos de $U$. Como $|V(P_0)\cap Y| = \lfloor\frac{k}{2}\rfloor\leq 2t-1$, algum vizinho de $U$ não está em $V(P_0)$, e com isso temos um caminho de $k+1$ vértices.
 	
 \end{dem}
+
+
 
 \begin{lema}
 	\label{lema:caminho_hamiltoniano}
@@ -159,8 +181,10 @@ Um pouco de texto\ldots
 	Para cada vizinho de $z''$ em $C$, existe um caminho $P_{z''t''}$ que percorre exatamente os vértices de $C$ além de $z''$. Em outras palavras, existe um conjunto $T''\subset V''$ tal que $|T''|\geq0.07m$ e para cada $t''\in T''$ existe um caminho $P_{z''t''}$ de $z''$ a $t''$ com $V(P_{z''t''}) = \{z''\}\cup V(C)$.
 	
 	Por \ref{item:regularidade}, existe pelo menos uma aresta entre $S'$ e $T''$, digamos $\{s', t''\}$. Para tal $s'$, existe um caminho $P_{s'y''}$ de $s'$ a $y''$ que percorre os mesmos vértices de $P_{z'y''}$. Concatenando os caminhos $P_{x'z''}$, $P_{z''t''}$, a aresta $\{t'', s'\}$ e o caminho $P_{s'y''}$, obtemos o caminho desejado.
-	
+	\qedhere
 \end{dem}
+
+\section{Colorações com grafos bipartidos completos monocromáticos grandes}
 
 \begin{lema}
 	\label{lema:gyarfas}
@@ -227,6 +251,8 @@ Um pouco de texto\ldots
 		
 		Agora, suponha que todos os circuitos vermelhos em $V_1'$ têm tamanho menor que $n_1 - n_2$. Pelo Lema \ref{lema:gyarfas} aplicado no grafo completo nos vértices em $V_1'$, existem um circuito vermelho $\tilde{C}^r$ e um caminho azul $P^b$ tal que $V_1' = V(\tilde{C}^r)\cup V(P^b)$ é uma partição. 
 	\end{caso}
+	
+	\qedhere
 \end{proof}
 
 \begin{fato}
@@ -367,7 +393,9 @@ Isso nos permite garantir que há pelo menos $\frac{1}{7}|V_i|$ vértices em $V_
 
 Agora, vamos descrever como lidar com cada vértice de $\tilde{V}_0$. Dado $v\in \tilde{V}_0$, nosso objetivo é marcar $v$ de rosa ou ciano, inativando no máximo 8 outros vértices de $K_n$, e repetir tal processo para cada vértice de $\tilde{V}_0$.
 Vamos tomar um par $(V_{2i-1},V_{2i})$, com $i\in[s]$, tal que ambos $V_{2i-1}$ e $V_{2i}$ estão insaturados, e assuma que $v$ possui dois vizinhos vermelhos ativos $w$ e $w'$ em um dentre $V_{2i-1}$ e $V_{2i}$, digamos $w,w'\in V_{2i-1}$. Então consideramos apenas dois casos.
+
 \setcounter{caso}{0}
+
 \begin{caso}
 	\emph{$V_{2i}$ é vermelho-dominado.}\\
 	Dado $V_j$ insaturado, $j\in\{2s+1,\dots,k\}$, tome $x\in V_j$ ativo, e $y,z\in V_{2i}$ vizinhos vermelhos ativos de $x$.\\
@@ -375,29 +403,73 @@ Vamos tomar um par $(V_{2i-1},V_{2i})$, com $i\in[s]$, tal que ambos $V_{2i-1}$ 
 \end{caso}
 
 \begin{caso}
-	\emph{$V_{2i}$ é azul-dominado}\\
-	Tome $x\in V_{2i}$ tal que $x$ tem pelo menos $0.65|\tilde{V}^b|$ vizinhos azuis em $\tilde{V}^b$.
+	\emph{$V_{2i}$ é azul-dominado.}\\
+	Tome $x\in V_{2i}$ tal que $x$ tem pelo menos $0.65|\tilde{V}^b|$ vizinhos azuis em $\tilde{V}^b$.\\
 	Marque os vértices $v,w,w'$ de rosa e $x$ de ciano.
 \end{caso}
 
-Suponha agora que $v$ tem no máximo um vizinho vermelho ativo tanto em $V_{2i-1}$ quanto em $V_{2i}$. Então temos novamente dois casos.
+Suponha agora que $v$ tem no máximo um vizinho vermelho ativo tanto em $V_{2i-1}$ quanto em $V_{2i}$. Como no máximo um dentre os conjuntos $V_{2i-1}$ e $V_{2i}$ é vermelho-dominado, podemos supor, por exemplo, que $V_{2i}$ é azul-dominado, e então temos novamente dois casos.
 
-\begin{obs}
-  Uma observação.
-\end{obs}
+\setcounter{caso}{0}
+\begin{caso}
+	\emph{$V_{2i-1}$ e $V_{2i}$ são azul-dominados.}\\
+	Tome $w\in V_{2i-1}$ e $w'\in V_{2i}$ vizinhos azuis ativos de $v$ tais que $w$ e $w'$ possuem cada um pelo menos $0.65|\tilde{V}^b|$ vizinhos azuis em $\tilde{V}^b$.\\ 
+	Marque de ciano os vértices $v,w,w'$.
+\end{caso}
 
-\begin{coro}[Nome do corolário]
-  Meu primeiro corolário.
-\end{coro}
+\begin{caso}
+	\emph{$V_{2i-1}$ é vermelho-dominado e $V_{2i}$ é azul-dominado.}\\
+	Tome $w,w'\in V_{2i}$ vizinhos azuis ativos de $v$ tais que $w$ e $w'$ possuem cada um pelo menos $0.65|\tilde{V}^b|$ vizinhos azuis em $\tilde{V}^b$. Seja $j\in\{2s+1,\dots,k\}$ tal que $V_j$ está insaturado, e tome $x_1,x_2\in V_j$ vértices ativos tais que existem vértices ativos $y_1,y_2,z_1,z_2\in V_{2i-1}$ tais que $y_1x_1z_1$ e $y_2x_2z_2$ são caminhos vermelhos vértice-disjuntos.\\
+	Marque os vértices $x_1,y_1,z_1,x_2,y_2,z_2$ de rosa e $v,w,w'$ de ciano.
+\end{caso}
 
-\begin{dem}
-  Segue trivialmente do Teorema \ref{teo:nome_sugestivo}.
-\end{dem}
+Ao realizar tal processo para cada $v\in \tilde{V}_0$, alguns vértices de $\tilde{V}^r$ terão sido marcados de ciano, assim como alguns vértices de $\tilde{V}^b$ terão sido marcados de rosa. O circuito vermelho que queremos será formado pelos vértices de $\tilde{V}^r$ que não foram marcados de ciano e por todos os outros vértices rosas. Em contrapartida, o circuito azul será formado pelos vértices de $\tilde{V}^b$ que não foram marcados de rosa e por todos os outros vértices cianos. De fato, a existência do circuito vermelho segue do Lema \ref{lema:caminho_hamiltoniano} aplicado dentro de cada par $(V_{2i-1},V_{2i})$ removendo os vértices cianos e adicionando os caminhos formados pelos vértices rosas relativos a esse par. Os $s$ caminhos formados, concatenados alternadamente com os $P_i$'s, formam um circuito vermelho $\tilde{C}^r$. Por outro lado, como o número de vértices rosas em $\tilde{V}^b$ é no máximo $2|\tilde{V}_0| < 0.01|\tilde{V}^b|$, todo vértice $v\in\tilde{V}^b$ tem mais de $0.65|\tilde{V}^b|$ vizinhos azuis em $\tilde{V}^b$. Logo o conjunto $\tilde{W}^b$ formado pelos vértices de $\tilde{V}^b$ que não foram marcados de rosa e os vértices cianos do primeiro Caso 2, é tal que todo $w\in\tilde{W}^b$ possui pelo menos $0.6|\tilde{W}^b|$ vizinhos azuis em $\tilde{W}^b$. Pelo teorema de Dirac, existe um circuito $\tilde{C}^b$ azul que percorre exatamente os vértices de $\tilde{W}^b$. Para concluir, basta notar que os caminhos azuis de um ou três vértices que foram criados nos outros casos, com extremos com pelo menos $0.65|\tilde{V}^b|$ vizinhos azuis em $\tilde{V}^b$, podem ser adicionados um por um ao circuito $\tilde{C}^b$, de forma que terminamos com um circuito azul que completa a partição de $V(K_n)$. Isso encerra a prova do caso $\tilde{V}^b\neq\emptyset$.
 
-\begin{axioma}
-  Todo subconjunto de $\mathbb{R}$, que é não vazio e limitado
-  superiormente, admite supremo\index{Supremo}.
-\end{axioma}
+A partir de agora, consideramos o outro caso $\tilde{V}^b = \emptyset$. Nesse caso, não temos um conjunto para aplicar o teorema de Dirac para construir o circuito azul, e teremos que recorrer ao Lema \ref{lema:haxell} para formar o circuito azul a partir de um grafo bipartido azul.
+
+Vamos começar supondo que o número de vértices de $\tilde{V}_0$ é par. Dividiremos o processo, inicialmente, em quatro fases.
+
+\begin{fase}
+	\emph{Incorporando vértices de $\tilde{V}_0$ em pares.}\\
+	Nessa primeira parte, vamos considerar uma situação simples que também poderia ter sido considerada no caso $\tilde{V}^b$, mas que não foi necessária lá. Se existem um par $(V_{2i-1}, V_{2i})$ de conjuntos insaturados, com $i\in[s]$, e $v_1,v_2\in \tilde{V}_0$ vértices ativos distintos de modo que $v_1$ tem dois vizinhos vermelhos ativos $w_1,z_1\in V_{2i-1}$ distintos, e $v_2$ tem dois vizinhos vermelhos ativos $w_2,z_2\in V_{2i}$ distintos, então marque de rosa todos esses vértices $v_1,w_1,z_1,v_2,w_2,z_2$. Repita esse processo enquanto possível para os vértices de $\tilde{V}_0$ que ainda não foram usados.
+	
+	A fase 1 se encerra então quando não existem $v_1,v_2\in\tilde{V}_0$ vértices ativos distintos e um par de conjuntos insaturados $(V_{2i-1},V_{2i})$ em que podemos encontrar tais vértices $w_1,z_1,w_2,z_2$. Seja $V'_0\subseteq \tilde{V}_0$ o conjunto dos vértices de $\tilde{V}_0$ ainda ativos (ou seja, que não foram marcados de rosa). Como marcamos vértices de $\tilde{V}_0$ de rosa de dois em dois, as cardinalidades dos conjuntos $V'_0$ e $\tilde{V}_0$ têm a mesma paridade. Denote então $|V'_0| = 2\ell$, com $\ell$ inteiro não-negativo.
+\end{fase}
+
+\begin{fase}
+	\emph{Criando pares não-balanceados de vértices rosas.}\\
+	Se existem um vértice $v\in V'_0$ e um conjunto $V_i$ insaturado, $i\in[2s]$, tal que $v$ tem dois vizinhos vermelhos ativos $w,w'\in V_i$, então marque os vértices $v,w,w'$ de rosa. Para distinguir esse caso da fase anterior, vamos dizer que $\{w,w'\}$ é um par \emph{não-balanceado}.
+	Repita esse processo no máximo $\ell$ vezes, e enquanto possível. Vamos dizer que $\ell'\leq\ell$ vértices de $V'_0$ foram marcados de rosa nessa fase, e $\ell'$ pares não-balanceados foram criados. Ademais, encerramos a fase 2 com $2\ell - \ell'$ vértices ativos em $V'_0$, cada um com no máximo um vizinho vermelho ativo em cada $V_i$ insaturado, com $i\in[2s]$.
+\end{fase}
+
+\begin{fase}
+	\emph{Balanceando pares não-balanceados.}\\
+	Seja $V''_0$ o conjunto dos $2\ell-\ell'$ vértices ativos de $V'_0$. Mais ainda, podemos supor que todos os pares não-balanceados estão contidos nos conjuntos $V_1,V_3,\dots,V_{2s'-1}$, para algum $s'\leq s$, e vamos dizer que temos $r_i$ pares não-balanceados em $V_{2i-1}$, para cada $i\in[s']$ (donde $\ell' = r_1+\dots+r_{s'}$). Note que, como cada $v\in V''_0$ tem no máximo um vizinho vermelho em cada $V_i$ insaturado, então para cada $i\in [s']$ temos que há no máximo $1/\eps$ vértices em $V_{2i}$ com pelo menos $\eps|V''_0|$ vizinhos vermelhos em $V''_0$. Seja $W_{2i}\subseteq V_{2i}$ o subconjunto de vértices ativos de $V_{2i}$ com menos de $\eps|V''_0|$ vizinhos vermelhos em $V''_0$. Agora, escolha $r_i$ vértices $w_1^{(i)},\dots,w_{r_i}^{(i)}$ em cada $W_{2i}$ de modo que valha a seguinte propriedade: nenhum $v\in V''_0$ possui mais do que $0.02s'$ vizinhos vermelhos no conjunto $\mathcal{W} = \{w_j^{(i)} : 1\leq i\leq s', 1\leq j\leq r_i\}$. Marque de ciano todos os vértices em $\mathcal{W}$.
+\end{fase}
+
+\begin{fase}
+	\emph{Completando o grafo bipartido azul para um grafo bipartido balanceado.}\\
+	Uma vez que iremos aplicar o Lema \ref{lema:haxell} para uma das partes sendo o conjunto $V''_0$, temos que completar o outro lado do grafo bipartido até atingirmos $|V''_0| = 2\ell - \ell'$ elementos. Como criamos $\ell'$ elementos na fase 3, faltam $2\ell - 2\ell'$ vértices, que é um número par. Vamos então selecionar $\ell - \ell'$ pares de vértices $(z_j,z_j')$, que juntaremos aos $w_j^{(i)}$'s. Assim como o caso anterior, podemos escolher tais pares satisfazendo as condições abaixo:
+	\begin{itemize}
+		\item cada par $(z_j,z'_j)$ é tal que existe $i\in[s']$ de forma que $z_j\in V_{2i-1}$ e $z'_j\in V_{2i}$;
+		\item $z_j$ e $z'_j$ são vértices ativos;
+		\item cada vértice $z_j$ e $z_j'$ tem no máximo $\eps |V_0'|$ vizinhos vermelhos em $|V_0'|$;
+		\item qualquer vértice $v\in V_0''$ tem no máximo $0.02|Z|$ vizinhos vermelhos em $Z = \bigcup_{j=1}^{s'}\{z_j,z_j'\}$;
+		\item ao inativar todos os vértices $z_j$ e $z_j'$, nenhum $V_i$ ($i\in[2s']$) possui mais de $0.009|V_i| - 3$ vértices inativos (i.e., se inativamos os vértices um por um, nunca inativamos um vértice em um conjunto já saturado).
+	\end{itemize}
+	Marque, então, os vértices $z_j$ e $z_j'$ de ciano, para $j\in[\ell-\ell']$.
+\end{fase}
+
+Feito isso, temos finalmente os circuitos que queremos: o circuito vermelho tem como vértices os vértices de $\bigcup_{i=1}^{2s}$ que não foram marcados de ciano, e todos os outros vértices marcados de rosa. De fato, a existência de tal circuito segue do Lema \ref{lema:caminho_hamiltoniano} aplicado a cada par $(V_{2i-1},V_{2i})$ com os vértices cianos removidos, e considerando os caminhos de vértices rosas relativos a esse par; ao concatenar os caminhos obtidos com os caminhos $P_1,\dots,P_s$, temos o circuito vermelho. Os outros vértices induzem um grafo que contém um grafo azul $(V_0'', \mathcal{W}\cup Z)$-bipartido balanceado $\mathcal{B}$, tal que $\mathcal{B}$ tem grau mínimo $0.9|V_0''|$ e todo vértice em $\mathcal{W}\cup Z$ tem no mínimo $(1-\eps)|V_0''|$ vizinhos em $V_0''$. Pelo Lema \ref{lema:haxell}, $\mathcal{B}$ possui circuito hamiltoniano. Isso conclui a prova do Teorema \ref{teo_principal} no caso $\tilde{V}^b=\emptyset$ e $|\tilde{V}_0|$ par. 
+
+Agora, nos resta considerar o caso em que $|\tilde{V}_0|$ é ímpar, digamos $|\tilde{V}_0| = 2\tilde{\ell}-1$. A ideia é passar pelas mesmas quatro fases, fazendo alguma modificação que troque a paridade de $|\tilde{V}_0|$. Por exemplo, se algum conjunto insaturado $V_{2i-1}$ (ou $V_{2i}$), $i\in[s]$, contiver dois vértices ativos $v,v'$ conectados por uma aresta vermelha, então basta marcar $v$ e $v'$ de rosa e mover qualquer vértice ativo de $V_{2i}$ (respectivamente, $V_{2i-1}$) para $\tilde{V}_0$, e proceder como anteriormente. Então podemos supor que qualquer aresta entre dois vértices ativos de um conjunto $V_i$, $i\in[s]$, é azul. Dessa forma, podemos garantir que pelo menos uma das seguintes duas coisas acontecem enquanto repetimos o argumento anterior: 
+\begin{enumerate}[(1)]
+	\item durante a fase 3, balanceamos os pares não-balanceados da fase 2 tomando dois vértices ligados em azul em um mesmo $V_{2i}$;
+	\item durante a fase 4, tomamos dois pares $\{z_j,z_j'\}, \{\tilde{z}_j,\tilde{z}_j'\}$ no mesmo par $(V_{2i-1},V_{2i})$, de modo que $z_j'\tilde{z}_j'$ é uma aresta azul contida em $V_{2i}$.
+\end{enumerate}
+Em ambos os casos, terminamos com um grafo $(V_0'', \mathcal{W}\cup\mathcal{B})$-bipartido azul quase balanceado, com $|V_0''| = 2\ell - 1 - \ell'$ e $|\mathcal{W}\cup\mathcal{B}| = \ell' + (2\ell - 2\ell') = |V_0''| + 1$. Usando o Lema \ref{lema:caminho_hamiltoniano} com $r'=1$, $r'' = 0$ e $x'$ e $y''$ sendo os extremos da aresta azul garantida em ambos os casos, tal grafo possui um circuito hamiltoniano.
+Isso conclui a prova do Teorema \ref{teo_principal}.
+\qed
 
 Para mais detalhes veja ~\cite[p. nn]{Lvr} e ~\cite{Art}
 
